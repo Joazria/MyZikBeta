@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h5 class="font-weight-bold ml-2 mr-5">MEMBERS | <span class="badge badge-success"><%= @users_approved.count %> Approved</span>  | <span class="badge badge-warning"><%= @users_pending.count %> Pending</span> </h5>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+<!--       <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Link</a>
+      </li> -->
+      <li class="nav-item dropdown">
+
+        <p class="nav-link dropdown-toggle  btn btn-info m-2 active"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Articles</p>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <%= link_to "ADD AN ARTICLE", new_info_path, class: "dropdown-item" %>
+         <div class="dropdown-divider"></div>
+          <%= link_to "READ ALL ARTICLES", infos_path, class: "dropdown-item" %>
+
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+
+        <p class="nav-link dropdown-toggle btn btn-info m-2 active"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Discover</p>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <%= link_to "CREATE", '/', class: "dropdown-item" %>
+         <div class="dropdown-divider"></div>
+          <%= link_to "ACCESS ALL", '/', class: "dropdown-item" %>
+
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle btn btn-info m-2 active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Members
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<!--           <a class="dropdown-item" href="#">Disconcierge</a>
+          <a class="dropdown-item" href="#">DiscoClub</a>
+          <a class="dropdown-item" href="#">Kigali22</a>
+          <a class="dropdown-item" href="#">Dubai22</a>
+          <a class="dropdown-item" href="#">Abidjan23</a> -->
+          <div class="dropdown-divider"></div>
+          <%= link_to '/', class: 'dropdown-item' do  %>
+          All Members
+          <% end -%>
+        </div>
+      </li>
+      <li class="nav-item btn btn-info m-2 p-0 active">
+        <%= link_to '/', class:"nav-link active mr-5" do  %>
+        Wish list
+        <% end -%>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    <%= form_tag(dashboard_path, :method => "get", class: 'search-bar__form') do %>
+      <div class="search-bar__group">
+        <%= search_field_tag :search, params[:search],  label: 'Search',placeholder: "Search", class: "form-control" %>
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i>
+          Find a member
+        </button>
+      </div>
+    <% end %>
+  </form>
+        <li class="nav-item">
+          <% unless @results.nil? %>
+            <%= link_to dashboard_path, class: 'nav-link active badge badge-danger' do  %>
+            <h6> Erase Your Search </h6>
+            <% end -%>
+          <% end -%>
+
+      </li>
+  </div>
+</nav>
+
+
+
+
+
+
+

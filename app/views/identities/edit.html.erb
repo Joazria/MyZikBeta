@@ -1,0 +1,61 @@
+
+<div class="container">
+  <h1>EDIT SEU PERFILE</h1>
+
+
+
+  <%= simple_form_for @identity do |f| %>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.input :release,
+                    label: 'Apresenta-se:',
+                    placeholder: 'Ola Meu nome é Geraldinho ...' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :member,
+                    label: 'Member',
+                    collection: ['MUSICO',
+                        'ASSESSORIA DE IMPRENSA',
+                        'BOOKING - AGENCY',
+                        'BAND MANAGER',
+                        'CURADOR - CASA DE SHOW',
+                        'CURADOR - FESTIVAL',
+                        'LABEL',
+                          'PRODUTOR',
+                        'SERVICES'] %>
+      </div>
+      <div class="col-6">
+        <%= f.input :whatsapp,
+                    label: 'whatsapp',
+                    placeholder: 'XXXXXXXX',
+                    hint: 'for internal use only' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.input :country,
+                    as: :country,
+                    priority_countries: ["BR", "FR", "CH"],
+                    label: 'Pais'
+                  %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :state,
+                    label: 'Estado',
+                    placeholder: 'Rio de Janeiro' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :city,
+                    label: 'Cidade',
+                    placeholder: 'Rio de Janeiro' %>
+      </div>
+
+    </div>
+
+    <p><%= f.submit "Edit seu perfil", class: "btn btn-lg btn-flat m-2" %></p>
+  <% end %>
+</div>

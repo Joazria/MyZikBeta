@@ -1,0 +1,61 @@
+
+<!-- search -->
+<%= form_tag festivals_path, method: :get do %>
+<div class="search-form-control form-group">
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control string required",
+    placeholder: "Procurar um festival"
+  %>
+
+
+  <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Procurar
+    </button>
+  </div>
+<% end %>
+
+
+<!-- FESTIVALS -->
+
+
+
+  <% unless @results.nil? %>
+  
+
+      <div class="cards my-5">
+    <%  @results.each do |festival| %>
+       <%= link_to festival do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path festival.photo.key, :effect=>"art:zorro", crop: :fill %>')">
+            <%= festival.festival_name %> -
+            <%= festival.periode_start.strftime("%a-%m-%b") %> 
+
+        </div>
+        <%= render "shared/small_card_festival", festival:festival%>
+    <% end %>
+  <% end %>
+  </div>
+
+
+    <% else %>
+
+<div class="m-5">
+    <h1> <%= @festivals.size %> | <span class="text-success">FESTIVAIS</span> </h1>
+
+</div>
+  <hr>
+ <%= render '/shared/display_all_festivals' %>
+   <% end %>
+
+</div>
+<hr>
+<!-- MAP -->
+
+<div class="container mb-3">
+       <div id="map"
+  style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+

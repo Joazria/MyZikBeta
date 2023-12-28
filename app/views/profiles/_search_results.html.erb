@@ -1,0 +1,21 @@
+<% if current_user == @user %>
+      <%= render 'search_bar' %>
+    <% end %>
+    <!-- renderiza apenas se tiver resultado do search  -->
+    <% unless @users.nil? %>
+      <h5><%= "Found: #{@users.count} delegate(s)" %></h5>
+      <div class="dashboard__validation-container ">
+    <!-- renderiza oo resultado do search  -->
+
+        <% @users.each do |user| %>
+          <%= link_to  profile_path(user.id) do %>
+              <div class="notification">
+                <%= image_tag user.avatar, :gravity=>'face' %>
+                <div class="notification-content">
+                  <p> <%= user.first_name %> <%= user.last_name %></p>
+                </div>
+              </div>
+           <% end %>
+        <% end %>
+      </div>
+    <% end %>

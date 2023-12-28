@@ -1,0 +1,155 @@
+
+
+
+      <div id="image" class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @band.photo.key, :effect=>"art:zorro", crop: :fill %>'" >
+          <div class="">
+            <h1 class="text-uppercase " ><%= @band.name %> </h1>
+            <p  ><%= @band.headline %></p>
+                        <a class="btn btn-flat" href="mailto:<%= @band.email %>,booking@myzik.app?subject=<%= @band.name %> | MyZik | Booking">book now</a>
+          </div>
+      </div>
+    <%= render 'shared/search' %>
+
+
+   <section class="menu-band bg-light sticky-top links border-bottom mb-3">
+
+  <div class="row">
+      <h1 class="col-sm-4 p-1 d-flex justify-content-center"><%= @band.name %> </h1>
+
+        <ul class="col-sm-4 p-1 d-flex justify-content-around">
+          <li class="list-inline-item"><%= link_to "", @band.instagram , :class => "fab fa-instagram", :target => '_blank'  %> </li>
+          <li class="list-inline-item"><%= link_to "", "https://open.spotify.com/artist/#{@band.spotify}" , :class => "fab fa-spotify", :target => '_blank' %> </li>
+          <li class="list-inline-item"><%= link_to "", @band.youtube , :class => "fab fa-youtube", :target => '_blank' %> </li>
+          <li class="list-inline-item"><%= link_to "", @band.facebook , :class => "fab fa-facebook", :target => '_blank' %> </li>
+        </ul>
+
+
+        <div class="col-sm-4 ">
+          <div class="d-flex justify-content-around mb-3">
+           <div class="btn-group" role="group"></div>
+    <!-- <div class=" "> -->
+      <%= link_to "site web", @band.website , :class => "btn btn-flat", :target => '_blank' %>
+    <!-- </div> -->
+    <!-- <div class="col-sm-2 p-3"> -->
+            <a class="btn btn-flat" href="mailto:<%= @band.email %>,booking@myzik.app?subject=<%= @band.name %> | MyZik | Booking">book now</a>
+    <!-- </div> -->
+    </div>
+  </div>
+        </div>
+
+</section>
+
+
+
+<section class="p-5 container">
+  <div class="row">
+    <div class="col-lg-8 col-md-12">
+    <div class="embed-responsive embed-responsive-16by9 min-vw">
+        <iframe class="embed-responsive-item" src="<%= @band.yt_video_destak %>" title="YouTube video" allowfullscreen></iframe>
+</div>
+  <h2 class="mb-3 mt-3 text-white text-uppercase"> <%= @band.destak_discr %> </h2>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <iframe src="https://open.spotify.com/embed/artist/<%= @band.spotify %>" style="border: 0; width: 100%; height: 380px;" allowfullscreen allow="encrypted-media"></iframe>
+    </div>
+
+    <!-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UAiOKEZsb9A" title="YouTube video" allowfullscreen></iframe> -->
+</div>
+
+
+</section>
+
+  <section class="text-justify  mb-5">
+     <div class=" border-top ml-5 ">
+     <h3></h3>
+  <% if @band.genero1 %>
+    <span class="badge badge-success"><%= @band.genero1 %></span>
+  <% end %>
+  <% if @band.genero2 %>
+    <span class="badge badge-success"><%= @band.genero2 %></span>
+  <% end %>
+  <% if @band.genero3 %>
+    <span class="badge badge-success"><%= @band.genero3 %></span>
+  <% end %>
+  <% if @band.genero4 %>
+    <span class="badge badge-success"><%= @band.genero4 %></span>
+  <% end %>
+
+     </div>
+     <div class="container border-top mt-3">
+         <div class="text-justify  p-5">
+          <p class="lead"><%= markdown(@band.release)%></p>
+     </div>
+   </div>
+   </div>
+</section>
+
+<div class="container mb-3 pb-3">
+<section class="p-3   ">
+  <div class=" ml-5">
+  <h1>+ VIDEOS</h1>
+<div class="row d-flex justify-content-around">
+
+  <div class="col-lg-5 m-1">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="<%=@band.yt_video_one%>" title="YouTube video" allowfullscreen></iframe>
+    </div>
+  </div>
+    <div class="col-lg-5 m-1">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="<%=@band.yt_video_two%>" title="YouTube video" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</div>
+</div>
+
+<div class="container">
+  <div class="cards">
+    <% @bookings.where('showtime > ?', Date.today).order(:showtime).each do |gig| %>
+        <% if gig.band == @band.id.to_s %>
+          <% if gig.band.nil? %>
+              <% else %>
+            <div class="card-show">
+              <!-- <%#= cl_image_path Band.find(gig.band).photo.key %> -->
+              <img src="<%= cl_image_path Band.find(gig.band).photo.key %>" />
+              <div class="card-show-infos">
+                <h2>
+
+                <%= gig.showtime.strftime("%d/%m") %> | <%= Band.find(gig.band).name %></h2>
+                <p> <strong><% if gig.bookable_type ==  "Festival" %>
+                    <%= gig.bookable.festival_name %>
+                    <% else %>
+                    <%= gig.bookable.venue_name %>
+                    <% end -%></strong> </p>
+                    <p>  <%= gig.bookable.address %> </p>
+                <% end -%>
+            </div>
+            </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+
+
+<div class="container">
+<h1 class="text-right m-3">
+         DISCOVER | OTHERS BANDS <i class="fas fa-music"></i>
+        </h1>
+
+
+  <div class="cards">
+    <%  @bands.shuffle.first(3).each do |band| %>
+       <%= link_to band do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path band.photo.key, :effect=>"art:zorro", crop: :fill %>')">
+            <%= band.name %>
+        </div>
+    <% end %>
+  <% end %>
+  </div>
+  <%= link_to bands_path, class: "btn btn-flat btn-lg my-5 ml-5" do %>
+             <i class="fas fa-music"></i> | TODAS AS BANDAS
+            <% end -%>
+</div>

@@ -1,0 +1,108 @@
+
+<div class="container">
+  <h1>ALGUMAS NEWS INTERESSANTES ? ALGUNS EDITAIS ? </h1>
+
+  <%= simple_form_for @info do |f| %>
+
+  <div class="row">
+      <div class="col-12">
+        <%= f.input :name,
+                  label: "Nome do seu artigo",
+                  placeholder: 'Novo super edital ou curadoria de um festival aberto'%>
+      </div>
+     </div>
+
+    <div class="row">
+      <div class="col-4">
+        <%= f.input :region,
+                    label: 'Qual região ? Ou internacional ?',
+                    collection: [ 'Norte',
+                     'Centro-Oeste',
+                     'Nordeste',
+                     'Sudeste',
+                     'Sul',
+                     'internacional'] %>
+      </div>
+       <div class="col-4">
+        <%= f.input :state,
+                    label: 'Estado :',
+                    collection: [ 'Acre',
+                     'Alagoas',
+                     'Amapá',
+                     'Amazonas',
+                     'Bahia',
+                     'Ceara',
+                     'Distrito Federal',
+                     'Espírito Santo',
+                     'Goiás',
+                     'Maranhão',
+                     'Mato Grosso',
+                     'Mato Grosso do Sul',
+                     'Minas Gerais',
+                     'Pará',
+                     'Paraíba',
+                     'Paraná',
+                     'Pernambuco',
+                     'Piauí',
+                     'Rio de Janeiro',
+                     'Rio Grande do Norte',
+                     'Rio Grande do Sul',
+                     'Rondônia',
+                     'Roraima',
+                     'Santa Catarina',
+                     'São Paulo',
+                     'Sergipe',
+                     'Tocantins'] %>
+      </div>
+
+
+      <div class="col-4">
+        <%= f.input :proponente,
+                    label: 'Proponente :',
+                    collection: [ 'Pessoa Fisica',
+                     'Pessoa Juridica',
+                     'Pessoa Fisica e Juridica']  %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8">
+        <%= f.input :award,
+                    label: 'Premio :',
+                    placeholder: 'Quais estão os principais premio ou fee' %>
+      </div>
+      <div class="col-4">
+        <%= f.input :deadline,
+                    label: 'deadline :',
+                    placeholder: 'DD/MM/YY' %>
+      </div>
+
+
+    </div>
+      <div class="row">
+        <div class="col-12">
+        <%= f.input :description,
+                    label: 'description',
+                    as: :text,
+                    placeholder: 'fala um pouco mais sobre o edital ou a curadoria' %>
+        </div>
+
+      </div>
+
+    <div class="row">
+      <div class="col-8">
+     <%= f.input :link,
+                label:'link para se inscrever ao festival ou ao edital',
+                placeholder: 'exemplo www.nomedoedital.com' %>
+      </div>
+      <div class="col-4">
+            <%= f.input :photo,
+                label: 'upload a visual',
+                as: :file %>
+      </div>
+
+  </div>
+
+    <p><%= f.submit "Publicar sua info", class: "btn btn-success" %></p>
+  <% end %>
+</div>

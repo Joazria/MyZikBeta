@@ -1,0 +1,62 @@
+<div class="container">
+        <h1 class="text-right m-3">
+         MARKET <span class="text-white">| INFOS </span> <span class="text-white"><i class="fas fa-newspaper"></i></span>
+        </h1>
+
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @infos.each do |newsletter| %>
+    <div class="col">
+      <div class="card h-100">
+        <%= image_tag newsletter.photo, :crop=>"crop", :width=>200, :height=>200, :class=>'card-img-top'%>
+        <div class="card-body">
+          <h5 class="card-title"> <%= newsletter.name %></h5>
+          <p class="card-text font-weight-bold text-justify"><%= newsletter.award %></p>
+          <!-- <p class="card-text"><%#= newsletter.article %></p> -->
+        </div>
+        <div class="card-footer">
+
+          <button type="button" class="btn btn-sm btn-block btn-flat" data-toggle="modal" data-target="#newsModal<%= newsletter.id %> ">
+            Read the Article
+          </button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+</div>
+  <% @infos.each do |newsletter| %>
+
+ <div class="modal fade" id="newsModal<%= newsletter.id %>" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"> <span class="texte-uppercase"><%= newsletter.name %></span> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= image_tag newsletter.photo, :crop=>"crop", :width=>200, :height=>200, :class=>'card-img-top'%>
+            <p class="font-weight-bold text-justify"><%= newsletter.award %></p>
+
+            <hr>
+
+            <p class="text-justify"><%= newsletter.region %> | <%= newsletter.state %> | <%= newsletter.deadline %></p>
+              <hr>
+            <p class="text-justify"><%= newsletter.proponente %></p>
+            <hr>
+            <p class="text-justify"><%= newsletter.description %></p>
+
+        </div>
+        <div class="modal-footer">
+            <%= link_to "Saiba mais", newsletter.link, :class => "btn btn-flat", :target => '_blank' %>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>

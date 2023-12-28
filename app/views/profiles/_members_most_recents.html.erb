@@ -1,0 +1,62 @@
+<div class="dashboard__validation-container mt-3">
+  <% @users_approved.last(4).each do |user| %>
+    <div class="staff-card">
+      <div class="staff-card__main">
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar,
+            :gravity => "face",
+            #:crop => "crop",
+            :class => "staff-card__img",
+            :width => "250",
+            :height => "250"
+          %>
+        <% else %>
+          <%= image_tag "https://res.cloudinary.com/numama/image/upload/v1616795855/DISCOSPORT/discop_visual_boxing1_lwsyrs.png",
+            :gravity => "face",
+            #:crop => "crop",
+            :class => "staff-card__img",
+            :width => "250",
+            :height => "250"
+          %>
+        <% end %>
+        <div class="staff-card__country">
+          <% if user.country.nil? %>
+          <% else %>
+          <span class="flag-icon flag-icon-<%= user.country.downcase %> flag-icon-squared "></span>
+          <% end %>
+        </div>
+        <ul class="staff-card__info">
+          <li class="delegate-card__info-name">
+            <strong><%= user.first_name %></strong>
+          </li>
+          <li class="delegate-card__info-name">
+            <strong><%= user.last_name %></strong>
+          </li>
+<!--           <li class="staff-card__info-member text-uppercase">
+             <small>attending as : </small> <%#= user.identity.badge %>  <%#= user.country %>
+          </li> -->
+          <br>
+          <li class="staff-card__info-website text-uppercase font-weight-bold">
+            <a href="<%= user.website %>" class="">
+              <%= user.company %>
+            </a>
+          </li>
+          <li class="staff-card__info-website text-uppercase">
+            <%= user.activity %>
+          </li>
+
+          <li class="delegate-staff__info-btn">
+            <%= link_to "Member Profile", profile_path(user), class: "delegate-card__btn" %>
+          </li>
+          <br>
+       <!--    <li class="delegate-card__info-website text-uppercase">
+            <a href="https://<#%= user.website %>" class="btn btn-block btn-outline-danger"  target='_blank'>
+              <#%= user.website %>
+            </a> -->
+          </li>
+        </ul>
+      </ul>
+      </div>
+    </div>
+  <% end %>
+</div>

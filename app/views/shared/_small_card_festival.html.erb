@@ -1,0 +1,53 @@
+<div class="card-body pt-0">
+    <div class="widget-49">
+        <div class="widget-49-title-wrapper">
+                          
+                        <% if festival.confirmation == 'CONFIRMADO' %>
+
+                        <div class="widget-49-date-success">
+                            
+                            <% elsif festival.confirmation == 'DATA CONFIRMADA | SEM CONTACT' %>
+                            <div class="widget-49-date-warning">
+                            <% elsif festival.confirmation == 'SEM DATA | COM CONTACT'%>
+                            <div class="widget-49-date-danger">
+                            <% elsif festival.confirmation == 'PENDING' %>  
+                            <div class="widget-49-date-primary">
+                            <% else  %>
+                            <div class="widget-49-date-primary">
+                        <% end %>
+                          
+                          <span class="widget-49-date-month"> 
+                            <% unless festival.periode_start.nil?%> 
+                                <%#= @festival.periode_start.strftime("%a") %> 
+                            <% end %>
+                            </span>        
+                            <span class="widget-49-date-day"> 
+                                <% unless festival.periode_start.nil?%> 
+                                    <%#= @festival.periode_start.strftime("%d") %> 
+                                <% end %>
+                            </span>
+                            <span class="widget-49-date-month">
+                                <% unless festival.periode_end.nil?%> 
+                                    <%= festival.periode_end.strftime("%b") %> 
+                                <% end %>
+                            </span>
+  
+                       </div>
+
+                        <div class="widget-49-meeting-info">
+                            <span class="widget-49-pro-title">
+                            <%= festival.festival_name%>                          
+                            </span>
+                            <span class="widget-49-meeting-time">
+                              <%= festival.address.to_s.last(30)%>
+                            </span>
+                            <span class="widget-49-meeting-time">
+                                <% if festival.periode_end.nil?%> 
+                                    <i class="fas fa-calendar"></i>  |  <%= festival.periode_start.strftime("%d/%m") %> - <%= @festival.periode_end.strftime("%d/%m") %>
+                                <% end %>
+                            </span>
+                        </div>
+
+        </div>
+    </div>
+</div>

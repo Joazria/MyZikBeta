@@ -1,0 +1,43 @@
+<!-- <h1 class="text-white text-center"> TODO INICIA COM SUAS NECESSIDADES</h1> -->
+
+<div class="row mb-5">
+
+  <div class="col-md-4 mt-5 ml-md-5 mb-0">
+    <p class="mt-2 text-justify">
+      <span class="font-weight-bold text-success">MyZik </span> vem da palavra original do Baoulé, tribo africana ancestral da atual
+Costa do Marfim, a sua tradução livre em português significa música. A música,
+entre tantas disciplinas das artes é, das expressões, a que permeia quase
+todas as manifestações artísticas existentes. Ao se potencializar este nicho,
+temos como consequência o fortalecimento de toda a base do setor cultural.
+    </p>
+    <hr>
+    <p class="mt-4 text-justify"> Com objetivo de multiplicar e potencializar as possibilidades artísticas e
+oportunidades profissionais tanto para bandas, músicos, produtores, festivais,
+casas de shows e espetáculos e todos os demais envolvidos que tem
+participação tanto direta quanto indireta no mercado da música ao vivo, ainda
+em sua versão beta, o
+    <span class="font-weight-bold text-success">MyZik </span>  é uma plataforma que oferecendo em <span class="font-weight-bold">em um único
+local o acesso a informações como editais e oportunidades, festivais,
+concursos, premiações além também do contato direto entre contratantes
+e artistas através de mapeamento do novo mercado de produção
+musical </span> pós pandemia tanto no Brasil quanto na Europa nesta primeira versão
+da plataforma. </p>
+
+
+    <% unless user_signed_in? %>
+      <hr>
+        <div class="mt-5">
+          <%= link_to new_user_registration_path do %>
+          <button class="btn-lg btn-flat text-uppercase p-3 mt-2"> <i class="fas fa-user-plus"></i> | Faz parte da communidade My.Zik </button>
+          <% end -%>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-7 mt-3 mb-3">
+    <img class="img-fluid" alt="Responsive image" src="https://res.cloudinary.com/numama/image/upload/v1642002080/MYZIK/guitarrista-recortado_k8w1zd.png" />
+  </div>
+
+
+</div>
+

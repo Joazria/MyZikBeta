@@ -1,0 +1,78 @@
+<br><br><br><br><br>
+<div class="container">
+  <h1>EDIT YOUR AGENCY PROFILE</h1>
+
+  <%= simple_form_for @agency do |f| %>
+
+  <div class="row ml-2">
+      <div class="col-md-10">
+        <%= f.input :company,
+                  label: "Agencia ",
+                  placeholder: '...',
+                  required: true %>
+      </div>
+     </div>
+
+
+
+    <div class="row ml-2">
+      <div class="col-md-5">
+        <%= f.input :website,
+                    label: 'Website:',
+                    placeholder: '...' %>
+      </div>
+        <div class="col-md-5">
+        <%= f.input :instagram,
+                    label: 'Facebook',
+                    placeholder: '...' %>
+      </div>
+      <div class="col-md-5">
+        <%= f.input :tel,
+                    label: 'Telefone',
+                    placeholder: '..' %>
+      </div>
+
+     
+        <div class="col-md-5">
+          <%= f.input :email,
+                      label: 'Email:',
+                      placeholder: '...' %>
+        </div>
+         <div class="col-md-5">
+          <%= f.input :estado,
+                      label: 'State / Estado',
+                      placeholder: 'contato@johnlenon.com' %>
+        </div>
+
+
+        <div class="col-md-5">
+              <%= f.input :pais,
+                          as: :country %>
+        </div>
+
+
+
+       <div class="col-md-10">
+              <%= f.input :release,
+                          label: "Release",
+                          as: :text %>
+        </div>
+
+            <div class="col-md-6">
+            <%= f.input :logo,
+                        as: :file  %>
+            </div>
+
+            <div class="col-md-6">
+            <%= f.input :banner,
+                        as: :file %>
+            </div>
+                <p><%= f.submit "Edit My Agency Profile", class: "btn btn-flat" %></p>
+  <% end %>
+        </div>
+    
+
+
+
+</div>
+ </div>

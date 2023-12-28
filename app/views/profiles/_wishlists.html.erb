@@ -1,0 +1,198 @@
+  <!-- renderiza apenas se o user for o dono fo profile accessado  -->
+    <% if current_user == @user %>
+      <p>Wish list</p>
+      <% @wishes.each do |wish| %>
+<!-- renderizando os pedidos de meeting -->
+        <% if wish.user.id = current_user.id %>
+
+        <div class="notification">
+            <!-- renderizando a foto do user que enviou a ultima mensagem-->
+            <%= image_tag User.find(wish.invited_id).avatar, :gravity=>'face' %>
+            <div class="notification-content">
+               <% if wish.confirmation.nil? %>
+         <p class="text-info"><i class="fas fa-hourglass-half"></i> Pending</p>
+          <% elsif wish.confirmation == 'On Going' %>
+        <p class="text-warning"><i class="fas fa-chalkboard-teacher"></i> Processing</p>
+
+     <% elsif wish.confirmation == 'Confirmed' %>
+        <p class="text-success"><i class="far fa-calendar-check"></i> | <%= wish.meeting.to_time.strftime('%d/%m/%Y at %l:%M %p') %> GMT</p>
+         <% elsif wish.confirmation == 'Declined' || wish.confirmation == 'Cancel' %>
+        <p class="text-danger"><i class="far fa-calendar-times"></i> Declined</p>
+ <% else  %>
+       <p class="text-info"><i class="fas fa-hourglass-half"></i> Pending </p>
+      <% end %>
+              <p class="font-weight-bold"> <%= User.find(wish.invited_id).company %>  </p>
+              <p> <%= User.find(wish.invited_id).first_name %> <%= User.find(wish.invited_id).last_name %> </p>
+              <p> <%= User.find(wish.invited_id).job %>  </p>
+
+
+            </div>
+            <div class="notification-actions">
+
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#WishModal<%= wish.id %>">
+               View Details
+            </button>
+            </div>
+<!-- popup viewdetails -->
+  <div class="modal fade" id="WishModal<%= wish.id %>" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header font-weight-bold">
+          <h5 class="modal-title"> <span class="texte-uppercase">          <% if wish.confirmation.nil? %>
+         <p class="text-info"><i class="fas fa-hourglass-half"></i> Pending</p>
+          <% elsif wish.confirmation == 'On Going' %>
+        <p class="text-warning"><i class="fas fa-chalkboard-teacher"></i> Processing</p>
+
+          <% elsif wish.confirmation == 'Confirmed' %>
+        <p class="text-success"><i class="far fa-calendar-check"></i> | <%= wish.meeting.to_time.strftime('%d/%m/%Y at %l:%M %p') %> GMT</p>
+         <% elsif wish.confirmation == 'Declined' || wish.confirmation == 'Cancel' %>
+        <p class="text-danger"><i class="far fa-calendar-times"></i> Declined </p>
+            <% else  %>
+       <p class="text-info"><i class="fas fa-hourglass-half"></i> Pending </p>
+      <% end %></span> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <%= link_to profile_path(User.find(wish.invited_id).id) do  %>
+          <div class="notification">
+              <%= image_tag User.find(wish.invited_id).avatar, :gravity=>'face' %>
+              <div class="notification-content">
+            <p> <span class="font-weight-bold"> <%= User.find(wish.invited_id).first_name %> <%= User.find(wish.invited_id).last_name %>  </span> </p>
+            <p> <%= User.find(wish.invited_id).job %>  </p>
+              </div>
+          </div>
+          <% end -%>
+             <p class="font-weight-bold"> <%= User.find(wish.invited_id).company %>  </p>
+              <p>  <%= User.find(wish.invited_id).activity %>  </p>
+
+
+            <% if wish.confirmation == 'Confirmed' %>
+            <hr>
+                          <p>INFOS MEETING :</p>
+                          <p class=" text-justify"> <%= wish.release %></p>
+            <hr>
+              <%= link_to wish.link, :class => "btn btn-block btn-success", :target => '_blank' do %>
+              <i class="fas fa-headset"></i> | Access to meeting
+              <% end -%>
+            <% end %>
+
+            <p class="text-justify"><%= User.find(wish.invited_id).release %></p>
+        </div>
+        <div class="modal-footer">
+          <a  class="btn btn-info"
+              href="mailto:jeanjoelyao@discopclub.com
+              ?subject=Wish%20Meeting%20with%20<%= User.find(wish.invited_id).first_name %>
+              &body=Dear%20Personal%20Shopper,%0ACould%20you%20give%20me%20a%20feedback%20on%20my%20meeting%0A%0Awith:%20<%= User.find(wish.invited_id).first_name %>%20<%= User.find(wish.invited_id).last_name %>%20from%20<%= User.find(wish.invited_id).company %>
+              %0A%0ARegards,%0A%0A<%= wish.user.first_name %>">
+              <i class="fas fa-envelope"></i> | Personal Shopper</a>
+
+
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!-- REQUEST MEETINGS -->
+    <!-- renderiza apenas se o user for o dono fo profile accessado  -->
+    <% if current_user == @user %>
+
+      <p>Meeting Request from other members</p>
+      <% @requests.each do |wish| %>
+<!-- renderizando os pedidos de meeting -->
+        <% if wish.invited_id = current_user.id %>
+
+        <div class="notification">
+            <!-- renderizando a foto do user que enviou a ultima mensagem-->
+            <%= image_tag wish.user.avatar, :gravity=>'face' %>
+            <div class="notification-content">
+               <% if wish.confirmation.nil? %>
+         <p class="text-info"><i class="fas fa-hourglass-half"></i> Pending</p>
+          <% elsif wish.confirmation == 'On Going' %>
+        <p class="text-warning"><i class="fas fa-chalkboard-teacher"></i> Processing</p>
+
+     <% elsif wish.confirmation == 'Confirmed' %>
+        <p class="text-success"><i class="far fa-calendar-check"></i> | <%= wish.meeting.to_time.strftime('%d/%m/%Y at %l:%M %p') %> GMT</p>
+         <% elsif wish.confirmation == 'Declined' || wish.confirmation == 'Cancel' %>
+        <p class="text-danger"><i class="far fa-calendar-times"></i> Declined</p>
+ <% else  %>
+       <p class="text-info"><i class="fas fa-hourglass-half"></i> Pending </p>
+      <% end %>
+              <p class="font-weight-bold"> <%= wish.user.company %>  </p>
+              <p> <%= wish.user.first_name %> <%= wish.user.last_name %> </p>
+              <p> <%= wish.user.job %>  </p>
+
+
+            </div>
+            <div class="notification-actions">
+
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#RequestModal<%= wish.id %>">
+               View Details
+            </button>
+            </div>
+<!-- popup viewdetails -->
+  <div class="modal fade" id="RequestModal<%= wish.id %>" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header font-weight-bold">
+          <h5 class="modal-title"> <span class="texte-uppercase">          <% if wish.confirmation.nil? %>
+         <p class="text-info"><i class="fas fa-hourglass-half"></i> Pending</p>
+          <% elsif wish.confirmation == 'On Going' %>
+        <p class="text-warning"><i class="fas fa-chalkboard-teacher"></i> Processing</p>
+
+          <% elsif wish.confirmation == 'Confirmed' %>
+        <p class="text-success"><i class="far fa-calendar-check"></i> | <%= wish.meeting.to_time.strftime('%d/%m/%Y at %l:%M %p') %> GMT</p>
+         <% elsif wish.confirmation == 'Declined' || wish.confirmation == 'Cancel' %>
+        <p class="text-danger"><i class="far fa-calendar-times"></i> Declined</p>
+            <% else  %>
+       <p class="text-info"><i class="fas fa-hourglass-half"></i> Pending </p>
+      <% end %></span> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <%= link_to profile_path(wish.user.id) do  %>
+          <div class="notification">
+              <%= image_tag wish.user.avatar, :gravity=>'face' %>
+              <div class="notification-content">
+            <p> <span class="font-weight-bold"> <%= wish.user.first_name %> <%= wish.user.last_name %>  </span> </p>
+            <p> <%= wish.user.job %>  </p>
+              </div>
+          </div>
+          <% end -%>
+             <p class="font-weight-bold"> <%= wish.user.company %>  </p>
+              <p>  <%= wish.user.activity %>  </p>
+
+
+            <% if wish.confirmation == 'Confirmed' %>
+            <hr>
+                          <p>INFOS MEETING :</p>
+                          <p class=" text-justify"> <%= wish.release %></p>
+            <hr>
+              <%= link_to wish.link, :class => "btn btn-block btn-success", :target => '_blank' do %>
+              <i class="fas fa-headset"></i> | Access to meeting
+              <% end -%>
+            <% end %>
+
+            <p class="text-justify"><%= wish.user.release %></p>
+        </div>
+        <div class="modal-footer">
+
+
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>

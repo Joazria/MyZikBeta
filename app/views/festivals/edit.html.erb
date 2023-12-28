@@ -1,0 +1,184 @@
+
+<div class="container">
+  <h1>Edit YOUR FESTIVAL</h1>
+
+  <%= simple_form_for @festival do |f| %>
+
+  <div class="row">
+      <div class="col-md-8">
+        <%= f.input :festival_name,
+                  label: "Qual é o nome do seu festival",
+                  placeholder: 'Super mega lindo festival'%>
+      </div>
+       <div class="col-md-4">
+        <%= f.input :confirmation,
+                  label: "Statut", collection: ['CONFIRMADO', 'DATA CONFIRMADA | SEM CONTACT', 'SEM DATA | COM CONTACT', 'PENDING'] %>
+
+      </div>
+     </div>
+
+      <div class="col-12">
+
+           <%= f.input :comment,
+                      label:'JoA comment ',
+                      placeholder: 'infos' %>
+
+      </div>
+   <h2>CONTACT</h2>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.input :name,
+                    label: 'Nome do Curador:',
+                    placeholder: 'James Brown' %>
+      </div>
+       <div class="col-md-4">
+        <%= f.input :email,
+                    label: 'E-mail do Curador',
+                    placeholder: 'contato@johnlenon.com' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :tel,
+                    label: 'Tel/whatsapp do Curador',
+                    placeholder: '31999996993' %>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+          <%= f.input :name2,
+                      label: 'Nome do Curador #2:',
+                      placeholder: 'James Brown' %>
+        </div>
+         <div class="col-md-4">
+          <%= f.input :email2,
+                      label: 'E-mail do Curador #2',
+                      placeholder: 'contato@johnlenon.com' %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :tel2,
+                      label: 'Tel/whatsapp do Curador #2',
+                      placeholder: '31999996993' %>
+        </div>
+    </div>
+    
+       <h2>SITE E REDES SOCIAS</h2>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.input :fb,
+                    as: :string,
+                    label: 'Facebook',
+                    placeholder: 'Facebook/name_do_festival' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :insta,
+                    label: 'instagram :',
+                    placeholder: 'instagram/username' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :site,
+                    label: 'WebSite',
+                    placeholder: 'wwww.yourfestivalsite.com' %>
+      </div>
+
+    </div>
+       <h2>QUANDO</h2>
+
+    <div class="row">
+    <div class="col-md-6">
+    <%= f.input :periode_start,
+                label:'Primeiro dia do festival',
+                placeholder: 'Quando inicia seu festival' %>
+                </div>
+    <div class="col-md-6">
+    <%= f.input :periode_end,
+                label:'Ultimo dia do festival',
+                placeholder: 'Quando acaba seu festival' %>
+    </div>
+</div>
+
+   <h2>DO QUE SE TRATA SEU FESTIVAL </h2>
+    <div class="row">
+       <div class="col-md-4">
+              <%= f.input :genero1,
+                          label: "genero #1",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="col-md-4">
+              <%= f.input :genero2,
+                          label: "genero #2",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="col-md-4">
+              <%= f.input :genero3,
+                          label: "genero #3",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+    </div>
+        <div class="row">
+       <div class="col-md-4">
+              <%= f.input :genero4,
+                          label: "genero #4",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="col-md-4">
+              <%= f.input :genero5,
+                          label: "genero #5",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="col-md-4">
+              <%= f.input :genero6,
+                          label: "genero #6",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+    </div>
+      <div class="row">
+        <div class="col-12">
+           <%= f.input :release,
+                      as: :text,
+                      label:'Release do seu festival',
+                      placeholder: 'Nos conta um poquinho mais sobre seu festival' %>
+        </div>
+
+
+        </div>
+        <div class="row">
+        <div class="col-md-6">
+           <%= f.input :line_up,
+                      label:'Bandas que ja tocaram no seu festival',
+                      placeholder: 'Nos conta quais estão as bandas que ja tocaram seu festival' %>
+        </div>
+        <div class="col-md-6">
+           <%= f.input :youtube,
+                      label:'video',
+                      placeholder: 'copia e pasta o link youtube' %>
+        </div>
+        </div>
+
+           <h2>ONDE FICA</h2>
+      <div class="row">
+
+
+
+      <div class="col-12">
+
+           <%= f.input :address,
+                      label:'Onde acontece seu festival',
+                      placeholder: 'rua joao ramalho, 586, Perdizes, SP' %>
+
+      </div>
+
+      </div>
+
+
+
+
+    <%= f.input :photo,
+                label: 'upload a banner do seu festival',
+                as: :file %>
+
+
+    <p><%= f.submit "Edit My Festival Profile", class: "btn btn-flat" %></p>
+  <% end %>
+</div>

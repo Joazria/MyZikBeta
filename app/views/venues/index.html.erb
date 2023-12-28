@@ -1,0 +1,59 @@
+<br>
+ <%#= render '/shared/banner' %>
+
+<!-- search -->
+<%= form_tag venues_path, method: :get do %>
+<div class="search-form-control form-group">
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control string required",
+    placeholder: "Procurar uma casa de show"
+  %>
+
+
+  <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Procurar
+    </button>
+  </div>
+<% end %>
+<%= link_to map_venues_path do  %>
+<h5 class="btn btn-ghost">  <i class="fas fa-map-marked-alt"></i> | PROCURAR COM O MAPA </h5>
+ <% end %>
+
+<!-- VENUES -->
+
+
+<div class="cards my-5">
+<% unless @results.nil? %>
+  
+    <%  @results.each do |venue| %>
+        <%= link_to venue do %>
+          <%= render "shared/small_card_venue", venue:venue%>
+      <% end %>
+    <% end %>
+
+
+<% else %>
+
+
+  <h5> <%= @venues.size %> | <span class="text-success">CASAS DE SHOWS</span> </h5>
+
+
+
+    <!-- MAP -->
+
+
+  
+
+   <!-- ALL VENUES -->
+   
+   <% @venues.each do |venue| %>
+       <%= link_to venue do %>
+      <%= render "shared/small_card_venue", venue:venue%>
+    <% end %>
+  <% end %>
+   
+<% end %>
+
+
+

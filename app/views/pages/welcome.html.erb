@@ -1,0 +1,77 @@
+<br><br><br><br><br>
+<!-- <div class="container">
+      <div id="image" class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/numama/image/upload/v1604688711/Birds%20Booking/live_ruh9vp.jpg);">
+          <h1>My.Zik</h1>
+          <p> WELCOME ! BEMVINDO ! BIENVENU ! </p>
+ <%#= link_to "Registrar" , new_user_registration_path, class: "btn btn-flat" %>
+    </div>
+      <%#= render 'shared/search' %>
+ </div> -->
+<div class="container mt-5">
+  <h1 style="text-align:center;" class="green_title"> WELCOME TO OUR NETWORKING COMMUNITY </h1>
+
+
+   <!-- <h4 style="text-align:center;" > QUEM É VOCÊ  </h4> -->
+
+</div>
+<div class="container">
+
+
+<div class="flex-simboles">
+  <%= link_to new_band_path do %>
+
+  <div class="case-simbole">
+    <div class="simbole">
+       <i class="fas fa-music">  </i>
+    </div>
+    <div class="simbole-text">
+      <h1>BANDA / ARTISTA </h1>
+
+
+    </div>
+  </div>
+    <% end %>
+
+       <!-- <p>Gestão de contatos</p> -->
+  <%= link_to new_venue_path do %>
+   <div class="case-simbole">
+
+      <div class="simbole" >
+         <i class="fas fa-home"> </i>
+      </div>
+      <div class="simbole-text">
+        <h1> CASA DE SHOW / VENUE</h1>
+      </div>
+    </div>
+  <% end %>
+
+<%= link_to new_festival_path do %>
+    <div class="case-simbole">
+      <div class="simbole">
+         <i class="fas fa-volume-up">  </i>
+      </div>
+      <div class="simbole-text">
+        <h1>FESTIVAL & EVENTS </h1>
+      </div>
+    </div>
+  <% end %>
+
+    <%= link_to '#' do %>
+
+  <div class="case-simbole">
+    <div class="simbole">
+       <i class="fas fa-concierge-bell"></i>
+    </div>
+    <div class="simbole-text">
+      <h1> PRESTADOR DE SERVICES & FORNECEDOR </h1>
+
+
+    </div>
+  </div>
+    <% end %>
+
+</div>
+</div>
+<br>
+
+

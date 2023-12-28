@@ -1,0 +1,17 @@
+var festivalId = '<%= @festival.id%>'
+
+
+
+function toggleLikeButton(festivalId, favoritedFestival) {
+  let likeButton = document.querySelector(`.like-icon[data-id='${festivalId}']`)
+  likeButton.classList.toggle('red');
+  if (likeButton.classList.contains('red')) {
+    const favoriteList = document.querySelector('.favorites');
+    favoriteList.insertAdjacentHTML('beforeend', favoritedFestival)
+  }
+  else {
+    document.querySelector(`.favorite[data-id='${festivalId}']`).remove()
+  }
+}
+
+toggleLikeButton(festivalId, '<%= j render "festivals/festival", festival: @festival %>');

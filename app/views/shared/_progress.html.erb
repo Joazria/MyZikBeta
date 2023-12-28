@@ -1,0 +1,12 @@
+ <% if booking.validation == 'DEAL' %>
+          class="table-success"
+          <% elsif booking.validation == 'OPÇÃO' %>
+               class="table-warning"
+          <% elsif booking.validation == 'RESERVADO'%>
+             class="table-info"
+        <% elsif booking.validation == 'TBA' %>
+               class="table-primary"
+           <% else  %>
+               class="table-default"
+   <% end %>
+       

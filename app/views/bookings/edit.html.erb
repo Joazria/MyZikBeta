@@ -1,0 +1,238 @@
+
+   <%#= ACTIONS BTNS %>
+                    
+<%= simple_form_for [@booking] do |f| %>
+      <div class="card card-margin">
+                           <% if @booking.validation == 'DEAL' %>
+            <h5 class=" badge badge-success no-border">  
+                            CONFIRMADO
+                 </h5>
+                        <% else %>
+
+                  <% end %>
+            <div class="card-header no-border">
+                <h5 class="card-title">  
+                  <% unless @booking.band.nil?%>   
+                        <%= Band.find(@booking.band.to_i).name.upcase %> 
+                    <% else %> 
+                        <%= f.input :band,
+                          # collection: Band.where(user_id: current_user.id),
+                          collection: Band.order('name ASC'),
+                          required: true,
+                          class: 'text-uppercase',
+                          # message: 'Username is mandatory, please specify one',
+                          hint: 'Do not forget to select your band , please!'%>  
+                  <% end %> 
+                             
+                </h5>
+                <h5 class="card-title ml-5">  
+                        <%= f.input :validation,
+                          collection: ['OPÇÃO', 'RESERVADO','TBA', 'DEAL'],
+                          required: true,
+                           label: false,
+                          class: 'text-uppercase'%>
+                </h5>
+            </div>
+
+            <div class="card-body pt-0">
+                <div class="widget-49">
+                    <div class="widget-49-title-wrapper">
+
+                     <% if @booking.validation == 'DEAL' %>
+                            <div class="widget-49-date-success">
+                        <% elsif @booking.validation == 'OPÇÃO' %>
+                            <div class="widget-49-date-warning">
+                        <% elsif @booking.validation == 'RESERVADO'%>
+                            <div class="widget-49-date-danger">
+                        <% elsif @booking.validation == 'TBA' %>
+                            <div class="widget-49-date-primary">
+                        <% else  %>
+                            <div class="widget-49-date-primary">
+                        <% end %>
+       
+     <%#= DATE %>            
+                        <span class="widget-49-date-month"> 
+                                <% unless @booking.showtime.nil?%> 
+                                    <%= @booking.showtime.strftime("%a") %> 
+                                <% end %>
+                            </span>        
+                            <span class="widget-49-date-day"> 
+                                <% unless @booking.showtime.nil?%> 
+                                    <%= @booking.showtime.strftime("%d") %> 
+                                <% end %>
+                            </span>
+                            <span class="widget-49-date-month">
+                                <% unless @booking.showtime.nil?%> 
+                                    <%= @booking.showtime.strftime("%b") %> 
+                                <% end %>
+                            </span>
+                        </div>
+ <%#= INFO BOOKABLE %>      
+                        <div class="widget-49-meeting-info">
+                            <span class="widget-49-pro-title">
+                        
+                          <% if @booking.bookable_type ==  "Festival" %>
+                        <%= link_to festival_path(@booking.bookable_id) do %>
+                            <%= @booking.bookable.festival_name.upcase %>
+                            
+                        <% end %>
+                    <% end %>
+                    
+
+                    <% if  @booking.bookable_type ==  "Venue" %>
+                        <%= link_to festival_path(@booking.bookable_id) do %>
+                         <%= @booking.bookable.venue_name.upcase %>
+                        <% end %>
+                    <% end %>
+                            </span>
+                            <span class="widget-49-meeting-time">
+                                  ...<%= @booking.bookable.address.to_s.last(30)%>
+                            </span>
+                            <span class="widget-49-meeting-time">
+                                 <% if @booking.bookable_type ==  "Festival" %>
+                                 <i class="fas fa-calendar"></i>  |  <%= @booking.bookable.periode_start.strftime("%d/%m") %> - <%= @booking.bookable.periode_end.strftime("%d/%m") %>
+                                <% end %>
+                            </span>
+                            <span class="widget-49-meeting-time">
+                                <% unless @booking.showtime.nil?%> 
+                                    <i class="fas fa-clock"></i> <%= @booking.showtime.strftime("%R") %>
+                                    <i class="fas fa-ticket-alt"></i> <%= @booking.bookable.ticket %> 
+                                    <i class="fas fa-users"></i> <%= @booking.bookable.capacity %>
+                                <% end %>
+                            </span>
+                        </div>
+                    </div>
+
+ <%#= NAME  %>
+                    <ol class="widget-49-meeting-points">
+                        <li class="widget-49-meeting-item">
+                            <span><%= @booking.bookable.name %></span>
+                        </li>
+<%#= EMAIL %>
+                        <li class="widget-49-meeting-item">
+                            <span>
+
+                                <%= mail_to @booking.bookable.email do  %>
+                                    <i class="fa fa-envelope"></i> | <%= @booking.bookable.email %>
+                                <% end -%>
+                            </span>
+                        </li>
+ <%#= WHATSAPP %>
+          <li class="widget-49-meeting-item">
+              <span>        
+                                <a href="https://wa.me/#{<%= @booking.bookable.tel %>}" target="_blank"><i class="fab fa-whatsapp"></i> <%= @booking.bookable.tel %></a>
+                   </span>
+            </li>
+ 
+  <%#= FEEDBACKS  COMMENTS %>                         
+
+
+
+
+  <%#= CONDITIONS %>
+
+            
+</ol>
+ <%#= FEE %>
+  <div class="row">
+      <div class="col-6">
+          <%= f.input :fee,
+            label: false,
+            placeholder: 'Valor em R$' %>
+    </div>
+ <%#= SHOWTIME %>
+    <div class="col-6">
+            <%= f.input :showtime,
+            :order => [ :day, :month, :year],
+            as: :date, 
+            label: false,
+            html5: true,
+            discard_year: true,
+            # as: :datepicker,
+            # as: :time, :minute_step => 15,
+            placeholder: 'Horario do show' %>
+    </div>
+    <div class="col-12">
+        <%= f.input :feedback,
+            label: 'Feedbacks / Comments',
+            as: :text,
+            placeholder: 'Comments, feedbacks',
+            input_html: { :style=> 'width: 100%;', :rows => 4} %>
+    </div>
+    <div class="col-4">
+               <%= f.input :next,
+                  label: 'Next Step',
+                  as: :radio_buttons,
+                  collection: [['0', 'Call'], ['1', 'E-mail'], ['2', 'Send Offer'], ['2', 'Validate '] ],
+                  label_method: :second,
+                  value_method: :first  %>
+   </div>
+    <div class="col-4">
+      <%= f.input :stage,
+                  label: 'Show',
+                  as: :radio_buttons,
+                  collection: [['0', 'Main Stage'], ['1', 'Stage'], ['2', 'Street']],
+                  label_method: :second,
+                  value_method: :first  %>
+    </div>
+    <div class="col-4">
+      <%= f.input :backline,
+                as: :radio_buttons,
+                collection: [['0', 'Okay'], ['1', 'Uncomplete'], ['2', 'No']],
+                label_method: :second,
+                value_method: :first %>
+    </div>
+    <div class="col-4">
+      <%= f.input :transporte,
+                as: :radio_buttons,
+                collection: [['0', 'flight'], ['1', 'van'], ['2', 'train'], ['3', 'no']],
+                label_method: :second,
+                value_method: :first %>
+    </div>
+    <div class="col-4">
+      <%= f.input :hotel,
+                  label: 'Hotel',
+                  as: :radio_buttons,
+                  collection: [['0', 'hotel'], ['1', 'camping'], ['2', 'no']],
+                  label_method: :second,
+                  value_method: :first  %>
+
+    </div>
+    <div class="col-4">
+      <%= f.input :food,
+                  label: 'Food',
+                  as: :radio_buttons,
+                  collection: [['0', 'Yes'], ['1', 'No']],
+                  label_method: :second,
+                  value_method: :first  %>
+    </div>
+  </div>
+
+
+
+
+<hr>
+
+       <div class="d-flex flex-column justify-content-around mt-2">
+          <%= f.submit "VALIDATE CHANGES", class: "btn btn-sm btn-ghost" %>
+           <%= link_to "VOLTAR", bookings_path, class: "btn btn-ghost mt-2" %>
+
+        </div>
+        
+
+
+
+
+
+
+  <% end %>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+            <%#= END OF THE CARD %>
+        </div>
+
+        
+

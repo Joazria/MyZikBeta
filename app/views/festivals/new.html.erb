@@ -1,0 +1,181 @@
+
+  <div class="card card-margin">
+ 
+
+  <%= simple_form_for @festival do |f| %>
+
+  <div class="card-body pt-0">
+   <h1>NEW FESTIVAL REGISTRATION</h1>
+
+        <%= f.input :festival_name,
+                  label: "Qual é o nome do seu festival",
+                  placeholder: 'Super mega lindo festival',
+                  required: true %>
+     
+        <%= f.input :confirmation,
+                  label: "Statut",
+                  collection: ['CONFIRMADO', 'DATA CONFIRMADA | SEM CONTACT', 'SEM DATA | COM CONTACT', 'PENDING'] %>
+     </div>
+   <h3>CONTACT</h3>
+
+
+      <div class="card-body pt-0">
+        <%= f.input :name,
+                    label: 'Nome do Curador:',
+                    placeholder: 'James Brown' %>
+      </div>
+       <div class="card-body pt-0">
+        <%= f.input :email,
+                    label: 'E-mail do Curador',
+                    placeholder: 'contato@johnlenon.com' %>
+      </div>
+      <div class="card-body pt-0">
+        <%= f.input :tel,
+                    label: 'Tel/whatsapp do Curador',
+                    placeholder: '31999996993' %>
+      </div>
+
+
+        <div class="card-body pt-0">
+          <%= f.input :name2,
+                      label: 'Nome do Curador #2:',
+                      placeholder: 'James Brown' %>
+        </div>
+         <div class="card-body pt-0">
+          <%= f.input :email2,
+                      label: 'E-mail do Curador #2',
+                      placeholder: 'contato@johnlenon.com' %>
+        </div>
+        <div class="card-body pt-0">
+          <%= f.input :tel2,
+                      label: 'Tel/whatsapp do Curador #2',
+                      placeholder: '31999996993' %>
+        </div>
+
+
+       <h2>SITE E REDES SOCIAS</h2>
+
+
+      <div class="card-body pt-0">
+        <%= f.input :fb,
+                    as: :string,
+                    label: 'Facebook',
+                    placeholder: 'Facebook/name_do_festival' %>
+      </div>
+      <div class="card-body pt-0">
+        <%= f.input :insta,
+                    label: 'instagram :',
+                    placeholder: 'instagram/username' %>
+      </div>
+      <div class="card-body pt-0">
+        <%= f.input :site,
+                    label: 'WebSite',
+                    placeholder: 'wwww.yourfestivalsite.com' %>
+      </div>
+
+
+       <h2>QUANDO</h2>
+
+ 
+    <div class="card-body pt-0">
+    <%= f.input :periode_start,
+                label:'Primeiro dia do festival',
+                placeholder: 'Quando inicia seu festival' %>
+                </div>
+    <div class="card-body pt-0">
+    <%= f.input :periode_end,
+                label:'Ultimo dia do festival',
+                placeholder: 'Quando acaba seu festival' %>
+    </div>
+
+
+   <h2>DO QUE SE TRATA SEU FESTIVAL </h2>
+
+       <div class="card-body pt-0">
+              <%= f.select :genero1,
+                           ['MUSICA BRASILEIRA', 'AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LGBTAIQ+', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="card-body pt-0">
+              <%= f.select :genero2,
+                            ['MUSICA BRASILEIRA', 'AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LGBTAIQ+', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="card-body pt-0">
+              <%= f.select :genero3,
+                          ['MUSICA BRASILEIRA', 'AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LGBTAIQ+', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+
+       <div class="card-body pt-0">
+              <%= f.select :genero4,['MUSICA BRASILEIRA', 'AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LGBTAIQ+', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="card-body pt-0">
+              <%= f.select :genero5, 
+                          ['MUSICA BRASILEIRA', 'AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA','LGBTAIQ+', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="card-body pt-0">
+              <%= f.select :genero6,
+                            ['MUSICA BRASILEIRA', 'AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA','LGBTAIQ+', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+
+        <div class="card-body pt-0">
+           <%= f.input :release,
+                      as: :text,
+                      label:'Release do seu festival',
+                      placeholder: 'Nos conta um poquinho mais sobre seu festival' %>
+        </div>
+
+
+        <div class="card-body pt-0">
+           <%= f.input :line_up,
+                      label:'Bandas que ja tocaram no seu festival',
+                      placeholder: 'Nos conta quais estão as bandas que ja tocaram seu festival' %>
+        </div>
+        <div class="card-body pt-0">
+           <%= f.input :youtube,
+                      label:'video',
+                      placeholder: 'copia e pasta o link youtube' %>
+        </div>
+  
+
+        <div class="card-body pt-0">
+           <%= f.input :ticket,
+                      label:'qual é valor do ingresso',
+                      placeholder: 'valor medio' %>
+        </div>
+        <div class="card-body pt-0">
+           <%= f.input :capacity,
+                      label:'capacidade',
+                      placeholder: 'Capacidade do festival' %>
+        </div>
+
+           <h2>ONDE FICA</h2>
+
+
+
+
+      <div class="card-body pt-0">
+
+           <%= f.input :address,
+                      label:'Onde acontece seu festival',
+                      placeholder: 'rua joao ramalho, 586, Perdizes, SP' %>
+
+
+
+      </div>
+
+
+<%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+
+<%= f.input :photo,
+            input_html: { class: 'hidden', id: 'photo-input'},
+            label_html: { class: 'upload-photo'},
+            label: '📷 Upload a photo' %>
+
+
+    <%= f.input :photo,
+                label: 'upload a banner do seu festival',
+                as: :file %>
+
+
+    <p><%= f.submit "Create My Festival Profile", class: "btn btn-flat" %></p>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+
+  <%= link_to festival do %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path festival.photo.key, :effect=>"art:zorro", crop: :fill %>')">
+      <div class="map-card">
+
+        <p><%= festival.festival_name %></p>
+        <p class='text-center'> | <%= festival.periode_start.strftime("%b") %> </p>
+      </div>
+    </div>
+  <% end %>

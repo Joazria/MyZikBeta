@@ -1,0 +1,8 @@
+
+       <%= link_to venue do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path venue.photo.key, :effect=>"art:zorro", crop: :fill %>')">
+          <div class="map-card">
+          <p>  <%= venue.venue_name %></p>
+            </div>
+        </div>
+  <% end %>

@@ -1,0 +1,207 @@
+
+     <div class="">
+     
+        <div class="card card-margin">
+     <%# BANNER  %>   
+                              <%= image_tag @festival.photo%>
+            <h5 class=" badge badge-success no-border">  
+                  </h5>
+            <div class="card-header no-border">
+     <%# FESTIVAL NAME  %> 
+              <% if user_signed_in?  %>
+
+                <h5 class="card-title">  
+                <%= link_to @festival.insta, target: '_blank' do  %>
+                  <span><i class="fab fa-instagram"></i> </span>
+                <% end %>
+                |  <%= @festival.festival_name.upcase %> 
+                </h5>
+              <% end %>                
+            </div>
+
+            <div class="card-body pt-0">
+                <div class="widget-49">
+                    <div class="widget-49-title-wrapper">
+
+                      <% if @festival.confirmation == 'CONFIRMADO' %>
+                              <div class="widget-49-date-success">
+                          <% elsif @festival.confirmation == 'DATA CONFIRMADA | SEM CONTACT' %>
+                              <div class="widget-49-date-warning">
+                          <% elsif @festival.confirmation == 'SEM DATA | COM CONTACT'%>
+                              <div class="widget-49-date-danger">
+                          <% elsif @festival.confirmation == 'PENDING' %>
+                              <div class="widget-49-date-primary">
+                          <% else  %>
+                              <div class="widget-49-date-primary">
+                      <% end %>
+       
+
+                        <span class="widget-49-date-month"> 
+                                <% unless @festival.periode_start.nil?%> 
+                                    <%= @festival.periode_start.strftime("%a") %> 
+                                <% end %>
+                            </span>        
+                            <span class="widget-49-date-day"> 
+                                <% unless @festival.periode_start.nil?%> 
+                                    <%= @festival.periode_start.strftime("%d") %> 
+                                <% end %>
+                            </span>
+                            <span class="widget-49-date-month">
+                                <% unless @festival.periode_end.nil?%> 
+                                    <%= @festival.periode_end.strftime("%b") %> 
+                                <% end %>
+                            </span>
+                        </div>
+                        <div class="widget-49-meeting-info">
+                            <span class="widget-49-pro-title">
+   <%#= INFO BOOKABLE %>                            
+                             <i class="fas fa-calendar"></i>  |  <%= @festival.periode_start.strftime("%d/%m") %> - <%= @festival.periode_end.strftime("%d/%m") %>
+
+                 
+                            </span>
+                            <span class="widget-49-meeting-time">
+                                  <%= @festival.address.to_s%>
+                            </span>
+    
+                            <span class="widget-49-meeting-time">
+                                
+
+                                    <i class="fas fa-ticket-alt"></i> <%= @festival.ticket %> |
+                                    <i class="fas fa-users"></i> <%=  @festival.capacity %>
+                            </span>
+                                                        <span class="widget-49-meeting-time">
+                                
+
+                                    
+                <%= link_to @festival.insta, target: '_blank' do  %>
+                  <i class="fas fa-globe"></i> <%= @festival.site %> 
+                <% end %>
+                            </span>
+                        </div>
+                    </div>
+ <%#= 1st EDIT BTN  %>
+                                    <%#= link_to edit_festival_path(@festival) do  %>
+                                        <%# <i class="fas fa-edit"></i> edit %>
+                                    <%# end -%>
+ <%#= NAME PROGRAMATEUR %>
+                    <ol class="widget-49-meeting-points">
+
+                        <li class="widget-49-meeting-item">
+                          <span> <i class="fas fa-id-card-alt"></i> | <%= @festival.name %></span>
+                        </li>
+<%#= EMAIL %>
+                        <li class="widget-49-meeting-item">
+                            <span>
+
+                              <i class="far fa-envelope-open"></i> |  <%= @festival.email do  %>
+                                    <i class="fa fa-envelope"></i> | <%= @festival.email %>
+                                <% end -%>
+                            </span>
+                        </li>
+ <%#= WHATSAPP %>
+                        <li class="widget-49-meeting-item">
+                            <span>
+                                <a href="https://wa.me/#{<%= @festival.tel %>}" target="_blank"><i class="fab fa-whatsapp"></i> <%= @festival.tel %></a>
+                            </span>
+                        </li>
+
+                        
+                    <div class="widget-49-meeting-action">
+                       <%= link_to edit_festival_path(@festival) do %>
+                                 <span class="btn btn-sm btn-flash-border-warning">  <i class="fas fa-edit"></i> edit</span>
+                            <% end -%>
+                    </div>
+                      
+               <hr>
+<%#= GENEROS %>
+                <span class="badge badge-light">
+                  <% unless @festival.genero1.nil? %>
+                    <%= @festival.genero1 %>
+                   <% end %>
+                </span>   
+                <span class="badge badge-light">
+                  <% unless @festival.genero2.nil? %>
+                    <%= @festival.genero2 %>
+                  <% end %>
+                </span>
+                <span class="badge badge-light">
+                <% unless @festival.genero3.nil? %>
+                   <%= @festival.genero3 %>
+                <% end %>
+                </span>
+                <span class="badge badge-light">
+                <% unless @festival.genero4.nil? %>
+                  <%= @festival.genero4 %>
+                <% end %>
+                </span>
+                <span class="badge badge-light">
+                  <% unless @festival.genero5.nil? %>
+                    <%= @festival.genero5 %>
+                  <% end %>
+                </span>
+                <span class="badge badge-light">
+                  <% unless @festival.genero6.nil? %>
+                    <%= @festival.genero6 %>
+                  <% end %>
+                </span>
+             <hr>
+ <%#= FEEDBACK %>
+                        <li class="widget-49-meeting-item"><span><i class="fas fa-volume-up"></i> <%= @festival.release  %></span></li>
+           
+
+      <hr>
+ <%#= LINE UP %>
+                        <li class="widget-49-meeting-item">  <span><i class="fas fa-icons"></i> -> <%= @festival.line_up  %></span></li>
+           
+             <hr>
+ 
+                         <li class="widget-49-meeting-item">
+                         
+                        
+
+
+                         </li>
+            
+                    </ol>
+   
+   <%#= ACTIONS BTNS %>
+
+                    
+                </div>
+            </div>
+
+      <% unless @festival.youtube.nil? %>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="<%=@festival.youtube%>" title="YouTube video" allowfullscreen></iframe>
+        </div>
+      <% end %>
+
+       <%# <div class="d-flex flex-column justify-content-around mt-5"> %>
+          <%# <%= link_to "SEND E-MAIL", "#", class: "btn btn-sm btn-ghost" %> 
+          <%# <%= link_to "COMENTS", "#", class: "btn btn-sm btn-ghost" %> 
+        <%# </div> %>
+         <% if user_signed_in?  %>
+       <%= link_to festival_bookings_path(:festival_id => @festival.id,
+                                      :user_id => current_user),
+                                      method: :post,
+                                      :class=> 'btn btn-success' do %>
+          <i class="fas fa-calendar-plus"></i> REQUEST A BOOKING
+                    <% end -%>
+        <% end -%>
+
+            <%#= END OF THE CARD %>
+
+ 
+ 
+        </div>
+
+    </div>
+
+
+     <%# <div class="favorite" data-id="<%= @festival.id %>
+            <%#= link_to toggle_favorite_festival_path(@festival), remote: true, method: :post do %>
+                <%#= render 'festivals/like_button', festival: @festival %>
+              <%# end %>
+          <%#/div> 
+
+<%#= OTHERS FESTIVALS SAME PERIODE %>

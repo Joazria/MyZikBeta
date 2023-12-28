@@ -1,0 +1,228 @@
+<br><br><br><br><br><br>
+
+
+
+
+   <div class="container">
+<div class="row">
+
+ <% @bookings.order(showtime: :asc).each do |booking| %>
+    <div class="col-lg-4">
+
+        <div class="card card-margin">
+                           <% if booking.validation == 'DEAL' %>
+            <h5 class=" badge badge-success no-border">  
+                            CONFIRMADO
+                 </h5>
+                        <% else %>
+
+                        
+                        <% end %>
+            <div class="card-header no-border">
+                <h5 class="card-title">  
+                  <% unless booking.band.nil?%>   
+                                    <%= Band.find(booking.band.to_i).name.upcase %> 
+                                <% else %> 
+                                    <%= link_to edit_booking_path(booking) do  %>
+                                        <i class="fas fa-edit"></i> edit
+                                    <% end -%>
+                                <% end %>         
+                </h5>
+                
+            </div>
+
+            <div class="card-body pt-0">
+                <div class="widget-49">
+                    <div class="widget-49-title-wrapper">
+
+                     <% if booking.validation == 'DEAL' %>
+                            <div class="widget-49-date-success">
+                        <% elsif booking.validation == 'OPÇÃO' %>
+                            <div class="widget-49-date-warning">
+                        <% elsif booking.validation == 'RESERVADO'%>
+                            <div class="widget-49-date-danger">
+                        <% elsif booking.validation == 'TBA' %>
+                            <div class="widget-49-date-primary">
+                        <% else  %>
+                            <div class="widget-49-date-primary">
+                        <% end %>
+       
+     <%#= DATE %>            
+                        <span class="widget-49-date-month"> 
+                                <% unless booking.showtime.nil?%> 
+                                    <%= booking.showtime.strftime("%a") %> 
+                                <% end %>
+                            </span>        
+                            <span class="widget-49-date-day"> 
+                                <% unless booking.showtime.nil?%> 
+                                    <%= booking.showtime.strftime("%d") %> 
+                                <% end %>
+                            </span>
+                            <span class="widget-49-date-month">
+                                <% unless booking.showtime.nil?%> 
+                                    <%= booking.showtime.strftime("%b") %> 
+                                <% end %>
+                            </span>
+                        </div>
+                        <div class="widget-49-meeting-info">
+                            <span class="widget-49-pro-title">
+   <%#= INFO BOOKABLE %>                            
+    <% if booking.bookable_type ==  "Festival" %>
+                        <%= link_to festival_path(booking.bookable_id) do %>
+                            <%= booking.bookable.festival_name.upcase %>
+                            
+                        <% end %>
+                    <% end %>
+                    
+
+                    <% if  booking.bookable_type ==  "Venue" %>
+                        <%= link_to festival_path(booking.bookable_id) do %>
+                         <%= booking.bookable.venue_name.upcase %>
+                        <% end %>
+                    <% end %>
+
+
+
+
+                            </span>
+                            <span class="widget-49-meeting-time">
+                                  ...<%= booking.bookable.address.to_s.last(30)%>
+                            </span>
+                            <span class="widget-49-meeting-time">
+                                 <% if booking.bookable_type ==  "Festival" %>
+                                 <i class="fas fa-calendar"></i>  |  <%= booking.bookable.periode_start.strftime("%d/%m") %> - <%= booking.bookable.periode_end.strftime("%d/%m") %>
+                                <% end %>
+                            </span>
+                            <span class="widget-49-meeting-time">
+                                <% unless booking.showtime.nil?%> 
+                                    <i class="fas fa-clock"></i> <%= booking.showtime.strftime("%R") %>
+                                    <i class="fas fa-ticket-alt"></i> <%= booking.bookable.ticket %> 
+                                    <i class="fas fa-users"></i> <%= booking.bookable.capacity %>
+                                <% end %>
+                            </span>
+                        </div>
+                    </div>
+
+ <%#= NAME  %>
+                    <ol class="widget-49-meeting-points">
+                        <li class="widget-49-meeting-item">
+                            <span><%= booking.bookable.name %></span>
+                        </li>
+<%#= EMAIL %>
+                        <li class="widget-49-meeting-item">
+                            <span>
+
+                                <%= mail_to booking.bookable.email do  %>
+                                    <i class="fa fa-envelope"></i> | <%= booking.bookable.email %>
+                                <% end -%>
+                            </span>
+                        </li>
+ <%#= WHATSAPP %>
+                        <li class="widget-49-meeting-item">
+                            <span>
+                                <a href="https://wa.me/#{<%= booking.bookable.tel %>}" target="_blank"><i class="fab fa-whatsapp"></i> <%= booking.bookable.tel %></a>
+                            </span>
+                        </li>
+ <%#= FEEDBACK %>
+                        <li class="widget-49-meeting-item"><span><%= booking.feedback  %></span></li>
+           
+             <hr>
+
+ <%#= FEE %>
+                        <li class="widget-49-meeting-item"><span>Cachê: R$<%= booking.fee %></span></li>
+  <%#= CONDITIONS %>
+                         <li class="widget-49-meeting-item">
+                         
+                          <%if booking.backline == '0' %>
+                <span class="badge badge-light">
+                  <i class="fas fa-dolly"></i>
+                </span>
+              <% elsif booking.backline == '1' %>
+                <span class="badge badge-light">
+                  <i class="fas fa-battery-half"></i>
+                </span>
+              <% else  %>
+    
+              
+            <%end %>
+
+
+              <% if booking.transporte == '0' %>
+                <span class="badge badge-light">
+                  <i class="fas fa-fighter-jet"></i>
+                  </span>
+                <%elsif booking.transporte == '1' %>
+                <span class="badge badge-light">
+                    <i class="fas fa-shuttle-van"></i>
+                </span>
+                <% elsif booking.transporte == '2' %>
+                <span class="badge badge-light">
+                    <i class="fas fa-train"></i>
+                </span>
+                <% else %>
+                  
+              <% end %>
+
+
+                <% if booking.hotel == '0' %>
+               <span class="badge badge-light">
+                  <i class="fas fa-hotel"></i>
+                  </span>
+                <% elsif booking.hotel == '1' %>
+                <span class="badge badge-light">
+                  <i class="fas fa-campground"></i>
+                  </span>
+                <% else %>
+                <% end %>
+
+            <% if booking.food == '0' %>
+              <span class="badge badge-light">
+                  <i class="fas fa-utensils"></i>
+                </span>
+
+            <% end %>
+
+
+
+                         </li>
+            
+                    </ol>
+
+   <%#= ACTIONS BTNS %>
+                    <div class="widget-49-meeting-action">
+                       <%= link_to edit_booking_path(booking) do %>
+                                 <span class="btn btn-sm btn-flash-border-warning">  <i class="fas fa-edit"></i> edit</span>
+                            <% end -%>
+                        <% if booking.validation == 'DEAL' %>
+                     <%#= TO DO INSERER LES NOUVELLES FONCTIONS APRES DEAL - NEXT STEP %>    
+                        <% elsif booking.fee.present? %>
+                            <%= simple_form_for booking, url: booking_url(booking.id), method: :patch do |f| %>
+                                <%= f.hidden_field :validation, value: 'DEAL' %>
+                                <%= f.submit 'DEAL', class: 'btn btn-sm btn-flash-border-warning' do %>
+                                <% end -%>
+
+                            <% end %>
+                            <% else %>
+                            <%= link_to booking_path(booking),
+                        data: {:confirm => 'Are you sure?'}, :method => :delete do%>
+                                    <button class="btn btn-sm btn-flash-border-warning">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <% end %>
+                    <% end %>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+            <%#= END OF THE CARD %>
+        </div>
+
+    </div>
+
+<% end %>
+
+
+    
+</div>
+</div>

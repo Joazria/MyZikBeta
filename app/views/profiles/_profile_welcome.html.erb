@@ -1,0 +1,32 @@
+<section class="profile-working">
+<%= render 'profile_card' %>
+<div class="col-md-6 mt-5 text-justify">
+
+  <ul class="profile-working__bio">
+
+<% if @user == current_user %>
+  <h5 class="text-primary">
+      Hi <span class="text-capitalize"><%= @user.first_name %></span> ,
+    </h5>
+    <h5 class="text-primary">
+      <span class= font-weight-bold  >Bem vind@ </span>.
+    </h5>
+    <h5 class="">  Muito obrigado de fazer parte de nossa comunidade. </h5>
+    <br>
+        <h5 class=""> Com objetivo de alavancar a retomada da cultura e seu fomento, ainda em sua versão beta, o MyZik é uma plataforma oferecendo em um único local o acesso a informações como editais e oportunidades, festivais, concursos e o contato direto através de mapeamento do novo mercado de produção musical pós pandemia colocando assim a música como mola mestra propulsora de todo setor nesta retomada.</h5>
+
+    <h5 class="text-primary text-justify">JoA</h5>
+    <h6 class="text-primary text-justify">My.Zik</h6>
+    <hr>
+    <%= link_to new_identity_path, class: "btn btn-block btn-lg btn-danger" do %>
+    <i class="far fa-edit"></i> | COMPLETA SEU PERFILE
+    <% end -%>
+  <% else %>
+  <h5 class="text-primary">
+      <span class= "font-weight-bold text-danger" > PERFILE INDISPONIVEL</span>
+    </h5>
+<% end %>
+</ul>
+</div>
+
+</section>

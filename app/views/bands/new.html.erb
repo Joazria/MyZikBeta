@@ -1,0 +1,148 @@
+
+ 
+  <div class="card card-margin">
+   <h5>INSCREVE SUA BANDA</h5> 
+  <%= simple_form_for @band do |f| %>
+    <div class="card-body pt-0">
+      <%= f.input :name,
+                        label: false,
+                        required: true,
+                        hint: 'nome de sua banda',
+                        placeholder: 'Qual é o nome de sua banda ? ' %>
+    </div>
+    <div class="card-body pt-0">
+      <%= f.input :email,
+                        label: false,
+                        required: true,
+                        placeholder: 'e-mail para agenciar banda',
+                        hint: 'e-mail para contratar a banda' %>
+    </div>
+    <div class="card-body pt-0">
+        <%= f.input :headline,
+                    as: :text,
+                    label:false,
+                    hint: 'Apresenta sua banda em uma frase',
+                    placeholder: 'Em tûrné no Brasil do dia XX ao dia XX de MM, Em Lançamento do seu novo album' %>
+    </div>
+    <div class="card-body pt-0">
+        <%= f.input :country,
+                    as: :country,
+                    label: false,
+                     placeholder: 'Pais',
+                    hint: 'De Qual pais é sua banda ' %>
+    </div>
+    <div class="card-body pt-0">        
+        <%= f.input :state,
+                    label: false,
+                     placeholder: 'Estado',
+                    hint: 'De qual estado é sua banda' %>    
+    </div>
+    <div class="card-body pt-0">
+        <%= f.input :city,
+                    label: false,
+                    hint: 'De qual Cidade é sua banda',
+                    placeholder: 'Cidade' %>
+    </div>
+    <div class="card-body pt-0">
+        <div class="row">
+          <div class="col">
+            <%= f.input :genero1,
+                        label: "genero #1",
+                        collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+          </div> 
+          <div class="col">
+              <%= f.input :genero2,
+                          label: "genero #2",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="col">
+                <%= f.input :genero3,
+                          label: "genero #3",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+          </div>
+          <div class="col">
+                <%= f.input :genero4,
+                          label: "genero #4",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+           </div>
+        </div>
+    </div>
+
+<div class="card-body pt-0">
+  <%= f.input :release,
+              input_html: {style: 'height:180px;'}, 
+              required: true, 
+              placeholder: 'Use Markdown to style your release text' %>
+</div>
+
+        <div class="card-body pt-0">
+             <%= f.input :website,
+                      label: false,
+                      hint: 'Qual é o site de sua banda',
+                      placeholder: 'https://www.seusite.com/' %>      
+        </div>
+
+
+      <div class="card-body pt-0">
+
+          <%= f.input :instagram,
+                      label: false,
+                      hint: 'Qual é o instagram de sua banda',
+                      placeholder: 'https://www.instagram.com/idinstagram/' %>
+
+      </div>
+
+
+
+      <div class="card-body pt-0">
+
+
+          <%= f.input :spotify,
+                      label: false,
+                      placeholder: 'Qual é o Id do Spotify de sua banda',
+                      hint: 'exemplo: 7yESRvEEjqOTuBgItxH14j' %>
+      </div>
+      <div class="card-body pt-0">
+          <%= f.input :youtube ,
+                    label: false,
+                    placeholder: 'Qual é a conta youtube de sua banda',
+                    hint: 'ex: https://www.youtube.com/user/seunkuti'%>
+        </div>
+        <div class="card-body pt-0">
+        <%= f.input :yt_video_destak,
+                    label: false,
+                    placeholder:"Bota o link 1 video youtube",
+                    hint: 'https://www.youtube.com/watch?v=BNH6EDB77jA' %>
+       </div>
+         <div class="card-body pt-0">
+        <%= f.input :yt_video_one,
+                    label: false,
+                    placeholder:"Bota o link 1 video youtube",
+                    hint: 'https://www.youtube.com/watch?v=BNH6EDB77jA' %>
+       </div>  
+      <div class="card-body pt-0">
+
+      <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+
+      <%= f.input :photo,
+                  input_html: { class: 'hidden', id: 'photo-input'},
+                  label_html: { class: 'upload-photo'},
+                  label: '📷 Upload a photo' %>
+
+                
+        </div>
+
+                <div class="card-body pt-0">
+<p><%= f.submit "Create My Band Profile", class: "btn btn-ghost" %></p>
+  <% end %>
+    </div>
+
+
+
+
+
+
+    
+</div>

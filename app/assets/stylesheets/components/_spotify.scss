@@ -1,0 +1,24 @@
+
+.spotify_player {
+  grid-row: 4/ span 1;
+  grid-column: 1 / span 1;
+
+
+  & iframe {
+    width:100%;
+    height:50vh;
+
+  }
+}
+
+
+@media (min-width: 100px) and (max-width: 575px) {
+
+.spotify_player {
+  grid-row: 7/ span 2;
+
+
+}
+
+
+}

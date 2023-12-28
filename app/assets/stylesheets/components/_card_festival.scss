@@ -1,0 +1,42 @@
+.card-festival {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-festival > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-festival h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-festival p {
+  color: black;
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-festival .card-festival-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-festival-infos .card-festival-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+  background-color: white;
+}
+

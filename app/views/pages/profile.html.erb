@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <%  @bands.each do |band| %>
+          <% band.offers.each do |offer| %>
+        <div class="col-sm-12 col-md-6">
+          <div class="card-offer">
+            <img src='<%= cl_image_path band.photo.key, :effect=>"art:zorro", crop: :fill %>' />
+              <div class="card-offer-infos">
+                  <div class="event_name">
+                <h3> <%= offer.event_name%></h3>
+                </div>
+                  <div class="local">
+                <h5><%= offer.local%></h5>
+              </div>
+               <div class="date">
+                <h5> <%= offer.date.strftime("%d/%m/%y")%></h5>
+              </div>
+
+
+              <div class="conditions">
+                <% if (offer.transport =='sim') %>
+                   <h2><span class="fas fa-bus-alt "  style=" color: green"></span></h2>
+                   <%else %>
+                    <h2><span class="fas fa-bicycle " ></span></h2>
+                <% end %>
+                <% if (offer.perdiem =='sim') %>
+                   <h2><span class="fas fa-utensils "  style=" color: green"></span></h2>
+                   <%else %>
+                    <h2><span class="fas fa-bone " ></span></h2>
+                <% end %>
+                <% if (offer.accommodation =='sim') %>
+                   <h2><span class="fas fa-bed "  style=" color: green"></span></h2>
+                   <%else %>
+                   <h2><span class="fas fa-campground " ></span></h2>
+                <% end %>
+                 <% if (offer.perdiem =='backline') %>
+                   <h2><span class="fas fa-dolly "  style=" color: green"></span></h2>
+                   <%else %>
+                   <h2><span class="fas fa-microphone-alt-slash" ></span></h2>
+                <% end %>
+              </div>
+
+              <div class="fee">
+                 <h2> R$ <%=offer.fee%></h2>
+              </div>
+              </div>
+          </div>
+        </div>
+        <% end %>
+     <%end%>
+  </div>
+</div>

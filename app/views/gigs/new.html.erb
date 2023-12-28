@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>NEW SHOW REGISTRATION</h1>
+
+  <%= simple_form_for [ @band, @gig] do |g| %>
+   <%= g.input :date,
+                label: 'Quando é seu show',
+                placeholder: 'DD/MM/YYYY' %>
+    <%= g.input :gate_opening,
+                placeholder: 'Abertura da Casa' %>
+    <%= g.input :showtime,
+                placeholder: 'Horario do show' %>
+    <%= g.input :duration,
+                placeholder: 'Duração do show' %>
+    <%= g.input :local,
+                placeholder: 'Nome da casa de show ou do festival' %>
+    <%= g.input :address,
+                placeholder: 'Enderço do local do show'  %>
+    <%= g.input :state,
+                placeholder: 'RJ / SP / MG / RS ...' %>
+    <%= g.input :country,
+                as: :string,
+                placeholder: 'RJ / SP / MG / RS ...' %>
+    <%= g.input :website,
+                placeholder: 'link do evento' %>
+    <%= g.input :release,
+                label: 'release do show',
+                placeholder: 'markdown accepted' %>
+
+    <p><%= g.submit "Create Your Show ", class: "btn btn-primary" %></p>
+  <% end %>
+</div>

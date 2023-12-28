@@ -1,0 +1,19 @@
+
+<br><br><br><br>
+<div class="d-flex">
+      <%= render "shared/dashboard/navbar_dashboard_controller" %>
+</div>
+
+<br><br>
+<%# if @results.nil? %>
+  <h3 class="text-danger font-weight-bold">USERS PENDING | <%#= @users_pending.size %></h3>
+        <%#= render "shared/dashboard/dashboard_listing_controller_pending" %>
+
+
+  <br><br>
+
+<%# else %>
+    <%#= render "shared/dashboard/dashboard_listing_controller_search" %>
+<%# end -%>
+<h3 class="text-danger font-weight-bold"> WISHLISTS | <%#= @wishes.size %> MEETING REQUESTS </h3>
+<%#= render "shared/dashboard/dashboard_wishes_list" %>

@@ -1,0 +1,61 @@
+<br><br><br><br><br><br>
+<div class="container">
+  <h1>CREATE YOUR PROFILE</h1>
+
+
+
+  <%= simple_form_for @identity do |f| %>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.input :release,
+                    label: 'Whom are you?:',
+                    placeholder: 'Ola Meu nome é Geraldinho ...' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :member,
+                    label: 'Member',
+                    collection: ['MUSICO',
+                        'ASSESSORIA DE IMPRENSA',
+                        'BOOKING - AGENCY',
+                        'BAND MANAGER',
+                        'CURADOR - CASA DE SHOW',
+                        'CURADOR - FESTIVAL',
+                        'LABEL',
+                          'PRODUTOR',
+                        'SERVICES'] %>
+      </div>
+      <div class="col-6">
+        <%= f.input :whatsapp,
+                    label: 'whatsapp',
+                    placeholder: 'XXXXXXXX',
+                    hint: 'for internal use only' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.input :country,
+                    as: :country,
+                    priority_countries: ["BR", "FR", "CH"],
+                    label: 'Country'
+                  %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :state,
+                    label: 'State',
+                    placeholder: 'Rio de Janeiro' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :city,
+                    label: 'City',
+                    placeholder: 'Rio de Janeiro' %>
+      </div>
+
+    </div>
+
+    <p><%= f.submit "Create your Profile ID", class: "btn btn-lg btn-flat m-2" %></p>
+  <% end %>
+</div>

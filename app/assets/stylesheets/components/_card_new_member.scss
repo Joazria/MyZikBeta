@@ -1,0 +1,101 @@
+.member-card {
+  height: 400px;
+  width: 275px;
+  display: grid;
+  grid-template-rows: minmax(360px, 1fr) 35px;
+  overflow-y: auto;
+  border-radius: 4px;
+
+  &__main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    height: max-content;
+    // background: $main-bg;
+    position: relative;
+  }
+  &__img {
+    margin-top: 1ch;
+    border-radius: 20px;
+
+  }
+  &__country {
+      .flag-icon {
+    width: 3em;
+    line-height: 2em;
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    padding: 8px;
+    border-radius: 50%;
+    transform: translate(75px, 110px);
+
+    }
+
+  }
+
+  &__info {
+    margin: 0;
+    padding: 1ch;
+    display: grid;
+    row-gap: 0.8ch;
+    width: 100%;
+
+    & > * {
+      color: white;
+      list-style: none;
+    }
+    &-name {
+      font-size: 1.8rem;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    &-website {
+      a {
+        color: green;
+      }
+    }
+    &-btn {
+      justify-self: center;
+    }
+  }
+  &__btn {
+    align-self: center;
+    display: inline-block;
+    padding: 0.6rem 1.8rem;
+
+    background: $gray;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none !important;
+    transition: color 0.3s ease-in, background 0.3s ease-in-out;
+    &:hover {
+      background: mix($green, $gray, 90%);
+    }
+  }
+  &__status {
+    color: white;
+    &-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1ch;
+
+      width: 100%;
+      margin: 0;
+      padding: 0.5ch 0;
+      &--success {
+        background-color: $green;
+      }
+      &--danger {
+        background-color: $red;
+      }
+    }
+  }
+}

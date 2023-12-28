@@ -1,0 +1,368 @@
+<br><br><br><br><br>
+
+ <%= render 'shared/booking_dashboard' %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <%# <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li> %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MENU
+        </a>
+       
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         
+            <%= link_to new_venue_path, class:"dropdown-item" do  %>
+              New Venue
+            <% end -%>
+
+          <%= link_to new_festival_path, class:"dropdown-item" do  %>
+              New Festival
+            <% end -%>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+            <%= link_to new_band_path, class:"dropdown-item" do  %>
+              New Band
+            <% end -%>
+        </div>
+      </li>
+      <li class="nav-item">
+          <%= form_tag(bookings_path, :method => "get", class: 'search-bar__form') do %>
+            <div class="search-form-control form-group">
+              <%= select_tag "query", options_for_select(@bookable_bands) , class:"custom-select text-uppercase" %>
+              <button name="button" type="submit" class="btn btn-flat">
+                <i class="fas fa-search"></i> 
+              </button>
+            </div>
+          <% end %>
+      </li>
+       
+  
+
+
+    </ul>
+          
+        <%= form_tag festivals_path, method: :get do %>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Festival</button>
+          <% end %>
+
+    </form>
+
+  
+        <%= form_tag festivals_path, method: :get do %>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Festival</button>
+    </form>
+  </div>
+</nav>
+
+
+<%#= LOGIC %>
+
+    <div class="row">
+
+       <div class="d-flex m-2">
+
+        </div>
+
+        
+        </div>
+
+
+          
+        <% end %>
+
+
+
+
+
+
+          <!-- end festival -->
+
+    
+
+          </div>
+
+    </div>
+  <% unless @results.nil? %>
+
+  <% else %>
+   
+      <table class="table table-striped mx-2">
+        <thead>
+          <tr>
+            <th scope="col">Dia</th>
+            <th scope="col">Band</th>
+            <th scope="col">Venue/Festival</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Tel</th>
+            <th scope="col"><i class="fas fa-paper-plane"></i></th>
+
+            <th scope="col">Fee</th>
+            <th scope="col">Offer</th>
+          <!--   <th scope="col"><i class="fas fa-dolly"></i></th>
+            <th scope="col"><i class="fa fa-plane"></i></th>
+            <th scope="col"><i class="fa fa-hotel"></i></th>
+            <th scope="col"><i class="fas fa-utensils"></i></th> -->
+            <th scope="col"></th>
+            <th scope="col">On Going</th>
+          </tr>
+        </thead>
+        <tbody>
+
+      <!-- LOGIC -->
+
+        <% @bookings.order(updated_at: :desc).each do |booking| %>
+     
+      <tr <%= render "shared/progress", booking: booking %>>
+        
+  
+        <th scope="row">           <% unless booking.showtime.nil? && booking.fee.nil?%>
+         <h2> <%= booking.showtime.strftime("%d/%m") %></h2>
+          <% end %></th>
+
+        <td>  <% if booking.band.nil?  %>
+          <%= link_to edit_booking_path(booking) do   %>
+        <button class="btn-success">START</button>
+        <% end -%>
+        <% else %>
+        <span class="font-weight-bold">
+        <%= link_to band_path(Band.find(booking.band)) do %>
+          <%= Band.find(booking.band).name.upcase %>
+        <% end -%>
+          </span>
+        <% end -%>
+        </td>
+     
+        <td class="font-weight-bold">
+          <%#= link_to festival_path(booking.festival_id) do %>
+
+
+          <% if booking.bookable_type ==  "Festival" %>
+            <%= link_to festival_path(booking.bookable_id) do %>
+              <%= booking.bookable.festival_name %>
+            <% end %>
+          <% end %>
+          <% if  booking.bookable_type ==  "Venue" %>
+            <%= link_to festival_path(booking.bookable_id) do %>
+              <%= booking.bookable.venue_name %>
+              <% end %>
+            <% end %>
+          <%# end -%>
+        </td>
+        
+
+  <% unless booking.band.nil? %>
+
+
+        <td> <%= booking.bookable.name %> </td>
+        <td><a href="https://wa.me/#{<%= booking.bookable.tel %>}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </td>
+        <td> <%= mail_to booking.bookable.email do  %>
+          <i class="fas fa-envelope"></i>
+          <% end -%>
+        </td>
+        <td>
+
+        </td>
+
+        <td>
+          <% unless booking.showtime.nil? && booking.fee.nil?%>
+          <%= booking.showtime.strftime("%d/%m/%Y") %>
+          <% end %>
+        </td>
+
+
+
+
+        <td>
+          <% unless booking.fee.nil? %>
+          <%= booking.fee %>
+          <% else %>
+          <%= link_to edit_booking_path(booking) do  %>
+            <i class="fas fa-edit"></i> edit
+            <% end -%>
+          <% end %>
+        </td>
+
+            <td>
+                    <!-- Button trigger modal -->
+          <button type="button" class="btn btn-ghost" data-toggle="modal" data-target="#offerModal-<%= booking.id %>">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </button>
+        </td>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="offerModal-<%= booking.id %>" tabindex="-1" aria-labelledby="offerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookableModalLabel"> <% if booking.bookable_type ==  "Festival" %>
+          <%= booking.bookable.festival_name %> | <%= booking.bookable.periode_start.strftime("%d/%m") %> - <%= booking.bookable.periode_end.strftime("%d/%m") %>
+                      <% else %>
+                <%= booking.bookable.venue_name %>
+                  <% end %>
+
+                  </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times</button>
+        </div>
+        <div class="modal-body">
+          <p><i class="fas fa-id-card-alt"></i> <%= booking.bookable.name %> </p>
+          <p> <i class="fas fa-envelope-open-text"></i> <%= mail_to booking.bookable.email do  %>
+          <%= mail_to booking.bookable.email   %>
+          <% end -%> </p>
+          <p><a href="https://wa.me/#{<%= booking.bookable.tel %>}" target="_blank"><i class="fab fa-whatsapp"></i> <%= booking.bookable.tel %></a></p>
+          <hr>
+
+          <h4><i class="fas fa-clock"></i> Show Time : <%= booking.showtime.strftime("%d/%m/%Y")%> @ <%= booking.showtime.strftime("%R") %></h4>
+          <h6><i class="fas fa-ticket-alt"></i> <%= booking.bookable.ticket %> | <i class="fas fa-users"></i> <%= booking.bookable.capacity %></h6>
+          <h6><i class="fas fa-map-marked-alt"></i> <%= booking.bookable.address.to_s%></h6>
+          <hr>
+          <h3><i class="fas fa-money-bill-alt"></i> <%= booking.fee %></h3>
+          <hr>
+          <div class="d-flex justify-content-around">
+
+              <%if booking.backline == '0' %>
+              <h3><span class="badge badge-light">
+                  <i class="fas fa-dolly"></i>
+                </span></h3>
+              <% elsif booking.backline == '1' %>
+                <h3><span class="badge badge-light">
+                  <i class="fas fa-battery-half"></i>
+                  </span></h3>
+              <% else  %>
+            <%end %>
+
+
+              <% if booking.transporte == '0' %>
+                <h3><span class="badge badge-light">
+                  <i class="fas fa-fighter-jet"></i>
+                  </span></h3>
+                <%elsif booking.transporte == '1' %>
+                <h3><span class="badge badge-light">
+                    <i class="fas fa-shuttle-van"></i>
+                    </span></h3>
+                <% elsif booking.transporte == '2' %>
+                <h3><span class="badge badge-light">
+                    <i class="fas fa-train"></i>
+                    </span></h3>
+                <% else %>
+                  <h3><span class="badge badge-light">
+                      <i class="fal fa-running"></i>
+                      </span></h3>
+              <% end %>
+
+
+                <% if booking.hotel == '0' %>
+              <h3> <span class="badge badge-light">
+                  <i class="fas fa-hotel"></i>
+                  </span></h3>
+                <% elsif booking.hotel == '1' %>
+                <h3><span class="badge badge-light">
+                  <i class="fas fa-campground"></i>
+                  </span></h3>
+                <% else %>
+                <% end %>
+
+            <% if booking.food == '0' %>
+              <h3><span class="badge badge-light">
+                  <i class="fas fa-utensils"></i>
+                </span></h3>
+
+            <% end %>
+
+
+          </div>
+          <hr>
+          <p class="text-justify">Follow up : <%= booking.feedback  %> </p>
+          <hr>
+          <div class="d-flex justify-content-between">
+          <h3><i class="fas fa-highlighter"></i> NEXT STEP  <% if booking.next == '0' %>
+          <span class="badge badge-secondary">Call</span>
+          <% elsif booking.next == '1' %>
+          <span class="badge badge-secondary"> E-mail</span>
+          <% elsif booking.next == '2' %>
+            <span class="badge badge-secondary"> Send Offer </span>
+          <% elsif booking.next == '3' %>
+            <span class="badge badge-secondary"> Validate Offer </span>
+          <% else %>
+
+          <% end %> </h3>
+          <h3>
+          <%= booking.when.strftime("%d/%m") %>
+          </h3>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <%= link_to edit_booking_path(booking) do  %>
+            <button type="button" class="btn btn-primary"> Edit Your Offer for <% if booking.bookable_type ==  "Festival" %>
+                                                                                  <%= booking.bookable.festival_name %>
+                                                                                  <% else %>
+                                                                                  <%= booking.bookable.venue_name %>
+                                                                                  <% end -%>
+                                                                                  </button>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+          <td>
+          <% if booking.feedback.nil? %>
+            <%= link_to edit_booking_path(booking) do  %>
+              <i class="fas fa-edit"></i> edit
+            <% end -%>
+
+          <% else %>
+          <div class="d-flex">
+          <%= booking.feedback %>
+          </div>
+
+          <% end %>
+        </td>
+      
+        <td>
+          <div class="d-flex justify-content-around">
+            <button class="btn-outline-info"><%= link_to edit_booking_path(booking) do  %>
+              <i class="fas fa-edit"></i>
+              <% end -%>
+              </button>
+            <% if booking.fee.present? %>
+                <%= simple_form_for booking, url: booking_url(booking.id), method: :patch do |f| %>
+                    <%= f.hidden_field :validation, value: 'DEAL' %>
+                      <%= f.submit 'DEAL', class: 'btn-info' do %>
+                      <% end -%>
+
+                  <% end %>
+                <% else %>
+                <%= link_to booking_path(booking),
+            data: {:confirm => 'Are you sure?'}, :method => :delete do%>
+                        <button class="btn-outline-dark">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <% end %>
+          <% end %>
+
+        </div>
+      </td>
+  <% else %>
+  <% end %>
+      </tr>
+    <% end %>
+      <!-- END LOGIC -->
+
+      </tr>
+    </tbody>
+  </table>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="container">
+
+  <br class="mt-3">
+        <h1 class="text-right m-3">
+         NOVOS <span class="text-white">| MEMBROS </span> <span class="text-white"><i class="fas fa-users"></i></span>
+        </h1>
+
+
+
+  <div class="d-flex justify-content-around flex-wrap">
+
+    <% @users_approved.last(6).each do |user| %>
+    <%= link_to profile_path(user) do %>
+      <%= image_tag user.avatar, alt: "avatar-large", class: "avatar-large m-2" %>
+      <% end -%>
+    <% end %>
+  </div>
+  <%= link_to profiles_path, class:'btn btn-flat btn-lg my-5' do %>
+  <i class="fas fa-users"></i> |  TODOS OS MEMBROS
+  <% end -%>
+</div>

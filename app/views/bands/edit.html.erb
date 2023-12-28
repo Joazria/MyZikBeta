@@ -1,0 +1,157 @@
+<br><br><br><br><br>
+
+  <h1>EDIT AS INFORMAÇÕES DE SUA BANDA</h1>
+
+  <%= simple_form_for @band do |f| %>
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :name,
+                    label: 'Nome da Banda:',
+                    placeholder: 'James Brown' %>
+      </div>
+       <div class="col-6">
+        <%= f.input :email,
+                    label: 'E-mail da banda:',
+                    placeholder: 'contato@johnlenon.com',
+                    hint: 'e-mail para contratar a banda' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <%= f.input :country,
+                    as: :country,
+                    label: 'Pais',
+                    placeholder: 'Brasil' %>
+      </div>
+      <div class="col-4">
+        <%= f.input :state,
+                    label: 'Estado',
+                    placeholder: 'Rio de Janeiro' %>
+      </div>
+      <div class="col-4">
+        <%= f.input :city,
+                    label: 'Cidade',
+                    placeholder: 'Rio de Janeiro' %>
+      </div>
+
+    </div>
+
+
+    <%= f.input :headline,
+                label:'Headline: presente sua banda em 1 frase',
+                placeholder: 'Jazz festivo tropicalista criado nas ruas do Rio de Janeiro para fazer dançar o mundo' %>
+    <div class="row">
+        <div class="col-md-3">
+              <%= f.input :genero1,
+                          label: "genero #1",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="col-md-3">
+              <%= f.input :genero2,
+                          label: "genero #2",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="col-md-3">
+              <%= f.input :genero3,
+                          label: "genero #3",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+        <div class="col-md-3">
+              <%= f.input :genero4,
+                          label: "genero #4",
+                          collection: ['AXE', 'BLACK MUSIC', 'BLUES', 'BLOCO DE CARNAVAL', 'BOSSA NOVA', 'CHILLOUT', 'CLASSIC ROCK', 'CLÁSSICO', 'COUNTRY', 'DANCE', 'DISCO', 'ELECTRO SWING', 'ELETRÔNICA', 'EMOCORE', 'FADO', 'FANFARRA', 'FOLK', 'FORRO', 'FUNK', 'FUNK CARIOCA', 'GOSPEL', 'GÓTICO', 'GRUNGE', 'HARD ROCK', 'HARDCORE', 'HIP HOP', 'HOUSE', 'INDIE', 'INDUSTRIAL', 'INFANTIL', 'INSTRUMENTAL', 'J-POP/J-ROCK', 'JAZZ', 'K-POP/K-ROCK', 'KIZOMBA', 'LO-FI', 'MARACATU', 'METAL', 'MPB', 'NEW AGE', 'NEW WAVE', 'ORIENTAL', 'PAGODE', 'POP', 'POP/PUNK', 'POP/ROCK', 'POS-PUNK', 'POWER-POP', 'PROGRESSIVO', 'PSICODELIA', 'PUNK-ROCK', 'R&B', 'RAP', 'REGGAE', 'REGGAETON', 'REGIONAL', 'ROCK', 'ROCK ALTERNATIVO', 'ROCKABILLY', 'ROMANTICO', 'SAMBA', 'SAMBA ENREDO', 'SERTANEJO', 'SKA', 'SOFT ROCK', 'SOUL MUSIC', 'TECHNO', 'TECHNOPOP', 'TRANCE', 'TRAP', 'TRILHA SONORA', 'TRIP HOP', 'TROPICAL HOUSE', 'WORLD MUSIC'] %>
+        </div>
+
+     </div>
+    <%= f.input :release,
+                placeholder: 'Use Markdown to style your release text' %>
+
+      <h2>Links / Redes Sociais </h2>
+
+      <div class="row">
+        <div class="col-4">
+           <%= f.input :website,
+                      placeholder: 'https://www.seunkuti.net/' %>
+        </div>
+      <div class="col-4">
+
+          <%= f.input :facebook,
+                      placeholder: 'https://www.facebook.com/mayraandrade'  %>
+
+      </div>
+
+      <div class="col-4">
+
+          <%= f.input :instagram,
+                      placeholder: 'https://www.instagram.com/orquestravoadora/' %>
+
+      </div>
+
+
+
+      <div class="col-4">
+
+
+          <%= f.input :spotify,
+                      label:'Id de sua conta spotify',
+                      placeholder: '7yESRvEEjqOTuBgItxH14j',
+                      hint: 'https://open.spotify.com/artist/7yESRvEEjqOTuBgItxH14j' %>
+      </div>
+      </div>
+
+   <h2>YOUTUBE</h2>
+   <div class="row">
+      <div class="col-6">
+        <%= f.input :youtube ,
+                  label: "Qual é a conta youtube de sua banda",
+                  placeholder: 'https://www.youtube.com/c/BandaTechnoBrass'%>
+      </div>
+     </div>
+     <div class="row">
+       <div class="col-6">
+        <%= f.input :yt_video_destak,
+                    label: "Bota o link da video que vc quer botar em destaque",
+                    placeholder: 'https://youtu.be/gsQdcI48CMs',
+                          hint: 'embbed link only' %>
+       </div>
+       <div class="col-6">
+
+     <%= f.input :destak_discr,
+                label: "Título do video",
+                placeholder: 'Show ao vivo no festival Bout du Monde - european tour 2019', input_html: { maxlength: 256 } %>
+       </div>
+     </div>
+
+     <div class="row">
+        <div class="col-4">
+              <%= f.input :yt_video_one,
+                          label: "Youtube video show ao vivo ou clip",
+                          placeholder: 'https://youtu.be/gsQdcI48CMs',
+                          hint: 'embbed link only'%>
+        </div>
+        <div class="col-4">
+            <%= f.input :yt_video_two,
+                         placeholder: 'https://youtu.be/gsQdcI48CMs',
+                          hint: 'embbed link only' %>
+        </div>
+        <div class="col-4">
+           <%= f.input :yt_video_three,
+                       placeholder: 'https://youtu.be/gsQdcI48CMs',
+                          hint: 'embbed link only' %>
+        </div>
+
+     </div>
+
+    <%= f.input :team,
+                label: 'Quantos integrantes tem na sua banda (musicos + produtor + equipe tecnica',
+                placeholder: '12'  %>
+
+
+    <%= f.input :photo,
+                label: 'upload a banner de sua banda',
+                as: :file %>
+
+
+    <p><%= f.submit "Edit a pagina de sua banda", class: "btn btn-flat" %></p>
+  <% end %>
+

@@ -1,0 +1,311 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"><i class="fas fa-globe-africa"></i></th>
+      <th scope="col">company</th>
+      <th scope="col">Profile</th>
+      <th scope="col"><i class="fas fa-info-circle"></i></th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Job</th>
+
+      <th scope="col">Disconcierge</th>
+      <th scope="col">Disco Club</th>
+      <th scope="col">Kigali22</th>
+      <th scope="col">Dubai22</th>
+      <th scope="col">Abidjan23</th>
+      <th scope="col">Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+   <% @results.each do |result| %>
+    <tr>
+      <th scope="row"> <%= result.id %></th>
+      <td><span class="flag-icon flag-icon-<%= result.country.downcase %> flag-icon-squared "></span></td>
+      <td><strong><%= result.company %></strong></td>
+      <td> <%= link_to profile_path(result) do %>
+            <% if result.avatar.attached? %>
+
+
+              <%= image_tag result.avatar,
+                  :gravity => "face",
+                  :crop => "crop",
+                  :width => "50",
+                  :height => "50"
+                %>
+              <% else %>
+              <%= image_tag "https://res.cloudinary.com/numama/image/upload/v1616795855/DISCOSPORT/discop_visual_boxing1_lwsyrs.png",
+                  :gravity => "face",
+                  :crop => "crop",
+                  :width => "50",
+                  :height => "50"
+                %>
+          <% end %>
+        <% end -%>
+      </td>
+      <td><button type="button" class="btn-primary"data-toggle="modal" data-target="#userInfoModal-<%= result.id %>">
+            <i class="fas fa-info-circle"></i>
+          </button>
+      </td>
+      <td><%= result.first_name %></td>
+
+       <td><%= result.last_name %></td>
+       <td><%= result.job %></td>
+
+
+      <% if result.identity.nil? %>
+       <td>NO ID</td>
+
+        <% else %>
+         <td>
+          <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <% if result.identity.disconcierge.nil? %>
+              not attending
+
+              <% else %>
+               <%= result.identity.disconcierge %>
+              <% end -%>
+
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :disconcierge, value: 'DISCONCIERGE' %>
+                  <%= f.submit 'DISCONCIERGE', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :disconcierge, value: 'Not Attending' %>
+                  <%= f.submit 'Not Attending', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+          </div>
+        </td>
+        <% end -%>
+
+              <% if result.identity.nil? %>
+       <td>NO ID</td>
+
+        <% else %>
+         <td>
+          <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <% if result.identity.discoclub.nil? %>
+       not attending
+
+        <% else %>
+          <%= result.identity.discoclub %>
+        <% end -%>
+
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :discoclub, value: 'DISCO CLUB' %>
+                  <%= f.submit 'DISCO CLUB', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :discoclub, value: 'Not Attending' %>
+                  <%= f.submit 'Not Attending', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+          </div>
+        </td>
+        <% end -%>
+
+       <% if result.identity.nil? %>
+       <td>NO ID</td>
+
+        <% else %>
+         <td>
+          <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <% if result.identity.kigali22.nil? %>
+       not attending
+
+        <% else %>
+          <%= result.identity.kigali22 %>
+        <% end -%>
+
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :kigali22, value: 'BUYER' %>
+                  <%= f.submit 'BUYER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :kigali22, value: 'SELLER' %>
+                  <%= f.submit 'SELLER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :kigali22, value: 'INFLUENCER' %>
+                  <%= f.submit 'INFLUENCER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :kigali22, value: 'PRODUCER' %>
+                  <%= f.submit 'PRODUCER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :kigali22, value: 'EXPERT' %>
+                  <%= f.submit 'EXPERT', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :kigali22, value: 'STAFF' %>
+                  <%= f.submit 'STAFF', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+          </div>
+        </td>
+        <% end -%>
+
+       <% if result.identity.nil? %>
+       <td>NO ID</td>
+
+        <% else %>
+         <td>
+          <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <% if result.identity.dubai22.nil? %>
+       not attending
+
+        <% else %>
+          <%= result.identity.dubai22 %>
+        <% end -%>
+
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :dubai22, value: 'BUYER' %>
+                  <%= f.submit 'BUYER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :dubai22, value: 'SELLER' %>
+                  <%= f.submit 'SELLER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :dubai22, value: 'INFLUENCER' %>
+                  <%= f.submit 'INFLUENCER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :dubai22, value: 'PRODUCER' %>
+                  <%= f.submit 'PRODUCER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :dubai22, value: 'EXPERT' %>
+                  <%= f.submit 'EXPERT', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :dubai22, value: 'STAFF' %>
+                  <%= f.submit 'STAFF', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+          </div>
+        </td>
+        <% end -%>
+
+        <% if result.identity.nil? %>
+       <td>NO ID</td>
+
+        <% else %>
+         <td>
+          <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <% if result.identity.abidjan23.nil? %>
+       not attending
+
+        <% else %>
+          <%= result.identity.abidjan23 %>
+        <% end -%>
+
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :abidjan23, value: 'BUYER' %>
+                  <%= f.submit 'BUYER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :abidjan23, value: 'SELLER' %>
+                  <%= f.submit 'SELLER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :abidjan23, value: 'INFLUENCER' %>
+                  <%= f.submit 'INFLUENCER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :abidjan23, value: 'PRODUCER' %>
+                  <%= f.submit 'PRODUCER', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :abidjan23, value: 'EXPERT' %>
+                  <%= f.submit 'EXPERT', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+            <%= simple_form_for result.identity, url: identity_url(result.identity.id), method: :patch do |f| %>
+                  <%= f.hidden_field :abidjan23, value: 'STAFF' %>
+                  <%= f.submit 'STAFF', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+                <% end %>
+          </div>
+        </td>
+        <% end -%>
+
+
+       <td><div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= result.status %>
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <%= simple_form_for result, url: profile_path(result), method: :patch do |f| %>
+                <%= f.hidden_field :status, value: 'approved' %>
+                <%= f.submit 'Approve', class: 'dropdown-item btn btn-sm btn-success m-1' %>
+              <% end %>
+          <%= simple_form_for result, url: profile_path(result), method: :patch do |f| %>
+                <%= f.hidden_field :status, value: 'not approved' %>
+                <%= f.submit 'Disapprove', class: 'dropdown-item btn btn-sm btn-danger m-1' %>
+              <% end %>
+        </div>
+        </div>
+      </td>
+
+    </tr>
+
+<!-- Modal -->
+<div class="modal fade" id="userInfoModal-<%= result.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><span class="flag-icon flag-icon-<%= result.country.downcase %> flag-icon-squared "></span> | <strong><%= result.company.upcase %></strong>  </h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <p> Activity : <%= result.activity %></p>
+       <br>
+        <h5><i class="far fa-id-card"></i> | <%= result.first_name %> <%= result.last_name %></h5>
+
+       <h5><i class="fas fa-atom"></i> | <%= result.job %></h5>
+       <h5><i class="far fa-envelope"></i> | <%= result.email %></h5>
+       <h5><i class="fab fa-whatsapp"></i> | <%= result.whatsapp %></h5>
+       <h5><i class="fas fa-phone-alt"></i> | <%= result.phone %></h5>
+       <hr>
+      <% unless result.identity.nil? %>
+         <p>  <%= result.identity.release %></p>
+       <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end -%>
+
+<tr>
+
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,160 @@
+
+
+<%# BANNER  %>   
+
+<div class="card card-margin">
+  <%= image_tag @band.photo %>
+    <h5 class=" badge badge-success no-border"> </h5>
+  <div class="card-header no-border">
+<%# INSTA / BAND NAME / YT LINK / SPOTIFY LINK %> 
+
+  <h5 class="card-title">  
+    <%= link_to @band.instagram, target: '_blank' do  %>
+      <span><i class="fab fa-instagram"></i> </span>
+    <% end %>
+    <%= @band.name.upcase %> 
+    </h5>
+    <hr>
+    <h5>
+        <span>  <%= link_to @band.youtube, target: '_blank' do  %> <i class="fab fa-youtube"></i>  <% end %>
+          |  <%= link_to "", "https://open.spotify.com/artist/#{@band.spotify}" , :class => "fab fa-spotify", :target => '_blank' %> </li>
+        </span>
+    </h5>
+  </div>
+  <%#= INSTA FULL / WEBSITE / GENERO %> 
+  <div class="card-body pt-0">
+    <div class="widget-49">
+        <div class="widget-49-title-wrapper">
+            <div class="widget-49-meeting-info">
+                <span class="badge badge-light">
+                <% unless @band.genero1.nil? %>
+                  <%= @band.genero1 %>
+                  <% end %>
+                  <% unless @band.genero2.nil? %>
+                  |  <%= @band.genero2 %>
+                  <% end %>
+                  <% unless @band.genero3.nil? %>
+                  | <%= @band.genero3 %>
+                  <% end %>
+                  <% unless @band.genero4.nil? %>
+                  | <%= @band.genero4 %>
+                <% end %>
+                </span>
+                <%# <span class="widget-49-pro-title">                            %>
+                  <%#= link_to @band.instagram, target: '_blank' do  %>
+                    <%# <i class="fab fa-instagram-square"></i>  = @band.instagram   %>
+                  <%# end %>
+                <%# </span> %>
+                <span class="widget-49-meeting-time">
+                  <%= link_to @band.website, target: '_blank' do  %>
+                    <i class="fas fa-globe"></i> <%= @band.website %> 
+                  <% end %>
+                </span>
+                <span class="widget-49-meeting-time">
+                  <i class="fas fa-map-marked-alt"></i> | <span class="flag-icon flag-icon-<%= @band.country.downcase %> flag-icon-squared "></span>  <%= @band.city %>
+                </span>
+            </div>
+        </div>
+        <hr>
+
+        <ol class="widget-49-meeting-points">
+<%#= headline %>
+            <li class="widget-49-meeting-item">
+              <span> <i class="fas fa-newspaper"></i> | <%= @band.headline %></span>
+            </li>
+          <hr>
+<%#= BOOKING INFO %>
+        <li class="widget-49-meeting-item">
+            <span>   <i class="fas fa-home"></i> | <%= @band.user.agency.company%> </span> 
+        </li>
+          <li class="widget-49-meeting-item">
+            <span> <i class="fas fa-id-card-alt"></i> | <%= @band.user.first_name%></span>
+          </li>
+<%#= EMAIL %>
+                        <li class="widget-49-meeting-item">
+                            <span>
+                                <i class="far fa-envelope-open"></i> |   <a href="mailto:<%= @band.email %>,booking@myzik.app?subject=<%= @band.name %> | MyZik | Booking"> <%= @band.email %></a>
+                            </span>
+                        </li>
+               <hr>
+
+ <%#= SPOTIFY %>
+                              <iframe src="https://open.spotify.com/embed/artist/<%= @band.spotify %>" style="border: 0; width: 100%; height: 380px;" allowfullscreen allow="encrypted-media"></iframe>
+           
+
+      <hr>
+
+                        <div class="embed-responsive embed-responsive-16by9 min-vw">
+                          <iframe class="embed-responsive-item" src="<%= @band.yt_video_destak %>" title="YouTube video" allowfullscreen></iframe>
+                  </div>
+<hr>
+ <%#= YOUTUBE %>
+                        <div class="embed-responsive embed-responsive-16by9 min-vw">
+                          <iframe class="embed-responsive-item" src="<%= @band.yt_video_one %>" title="YouTube video" allowfullscreen></iframe>
+                  </div>
+<hr>
+ <%#= RELEASE %>
+                        <li class="widget-49-meeting-item">  <span><i class="fas fa-icons"></i> -> <%= @band.release  %></span></li>
+           
+             <hr>
+ 
+                         <li class="widget-49-meeting-item">
+                         
+                        
+
+
+                         </li>
+            
+                    </ol>
+   
+   <%#= ACTIONS BTNS %>
+                    <div class="widget-49-meeting-action">
+                       <%= link_to edit_band_path(@band) do %>
+                                 <span class="btn btn-sm btn-flash-border-warning">  
+                                 <i class="fas fa-edit"></i> edit</span>
+                            <% end -%>
+                      
+                    
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+       <%# <div class="d-flex flex-column justify-content-around mt-5">
+          <%= link_to "SEND E-MAIL", "#", class: "btn btn-sm btn-ghost" %>
+          <%#= link_to "COMENTS", "#", class: "btn btn-sm btn-ghost" %>
+        <%# </div>  %>
+
+
+      
+            <%#= END OF THE CARD %>
+      <br>
+      <hr>
+    
+      <%  @bands.shuffle.first(3).each do |band| %>
+        <% unless band.id == @band.id %>
+          <%= link_to band do %>
+            <div class="card-category m-1" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path band.photo.key, :effect=>"art:zorro", crop: :fill %>')">
+                <%= band.name %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+
+ 
+
+ 
+        </div>
+<hr>
+
+    </div>
+
+     <%# <div class="favorite" data-id="<%= @festival.id %>
+            <%#= link_to toggle_favorite_festival_path(@festival), remote: true, method: :post do %>
+                <%#= render 'festivals/like_button', festival: @festival %>
+              <%# end %>
+          <%#/div> 
+
+<%#= OTHERS FESTIVALS SAME PERIODE %>

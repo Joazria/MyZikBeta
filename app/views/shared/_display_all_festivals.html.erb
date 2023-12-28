@@ -1,0 +1,125 @@
+<div class="m-5">
+
+  <br>
+    <h1 class="m-4 font-weight-bold ">JANEIRO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "01" %>     
+        <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">FEVEREIRO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "02" %>
+            <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">MARÇO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "03" %>
+              <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">ABRIL</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "04" %>
+              <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">MAIO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "05" %>
+              <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">JUNHO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "06" %>
+            <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">JULHO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "07" %>
+              <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">AUGUSTO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "08" %>
+              <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">SETEMBRO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "09" %>
+          <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">OUTUBRO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "10" %>
+              <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">NOVEMBRO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "11" %>
+              <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+  <hr>
+  <br>
+    <h1 class="m-4 font-weight-bold ">DECEMBRO</h1>
+  <div class="cards">
+    <% @festivals.each do |festival| %>
+    <% if festival.periode_start.strftime("%m") == "12" %>
+              <%= render "shared/display_festival_by_month", festival:festival%>
+      <% end -%>
+    <% end %>
+  </div>
+</div>
+
+

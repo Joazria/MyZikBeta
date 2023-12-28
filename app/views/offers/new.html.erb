@@ -1,0 +1,126 @@
+<div class="container">
+<div id="image" class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @band.photo.key, :effect=>"art:zorro", crop: :fill %>'" >
+        <h1><%= @band.name %> </h1>
+        <p><%= @band.headline %></p>
+    </div>
+
+
+
+
+  <h1>NEW OFFER REGISTRATION</h1>
+
+  <%= simple_form_for [ @band, @offer ] do |f| %>
+   <div class="row">
+     <div class="col-6">
+       <%= f.input :event_name,
+                label: 'Qual é o nome do seu evento',
+                placeholder: 'Nome do Seu Evento' %>
+      </div>
+      <div class="col-6">
+          <%= f.input :date,
+                label: 'Quando?',
+                placeholder: 'Quando vai acontercer' %>
+     </div>
+   </div>
+
+   <div class="row">
+     <div class="col-6">
+       <%= f.input :link_do_event,
+                     placeholder: 'link do site do evento ou do local do evento'%>
+     </div>
+     <div class="col-6">
+       <%= f.input :show_time,
+                    label: 'Que horas ?',
+                    placeholder: 'Horario do show previsto' %>
+     </div>
+   </div>
+
+   <div class="row">
+      <div class="col-6">
+        <%= f.input :format,
+                    collection: ["Festival", "Show Proprio", "Corporate", "privado"],
+                    placeholder: 'O evento vai ter diffusão online ? '  %>
+      </div>
+      <div class="col-6">
+        <%= f.input :streaming,
+                    label: 'Vai ter broadcast do show ?',
+                    collection: ["sim", "não"],
+                    placeholder: 'O evento vai ter diffusão online ? '  %>
+      </div>
+
+   </div>
+
+   <div class="row">
+     <div class="col-sm-12 col-md-6">
+        <%= f.input :local,
+                    label: 'Local do evento',
+                    placeholder: 'onde vai acontecer seu evento' %>
+     </div>
+     <div class="col-sm-12 col-md-3">
+
+   <%= f.input :ticket,
+                label: 'ingresso',
+                placeholder: 'valor do ingresso medio'  %>
+
+     </div>
+     <div class="col-sm-12 col-md-3">
+
+    <%= f.input :capacity,
+                label: 'estimativa do publico',
+                placeholder: 'capacidade do evento'  %>
+     </div>
+     <div class="col-md-12">
+
+    <%= f.input :address,
+                label: 'endereço do evento',
+                placeholder: 'Qual é o endereço do local do evento'  %>
+
+     </div>
+   </div>
+
+    <%= f.input :release,
+                placeholder: 'Fala um pouco mais da proposta do seu evento' %>
+
+    <%= f.input :line_up,
+                placeholder: 'Quais estão as outras bandas convidadas ?' %>
+
+    <%= f.input :patrocino,
+                label: 'Seu evento  tem patrocinador ? ',
+                placeholder: 'Seu evento tem patrocino? sim, quem ?  '  %>
+
+    <%= f.input :fee,
+                label: 'CONDIÇÕES : Cachê',
+                placeholder: 'Proposta de caché'  %>
+    <div class="form-row">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <%= f.input :transport,
+                  label: 'CONDIÇÕES : Transporte',
+                  collection: ["sim", "não", "a negociar"],
+                  placeholder: 'o transporte é pago pelo evento '  %>
+        </div>
+      <div class="col-sm-12 col-md-6 col-lg-3">
+          <%= f.input :accommodation,
+              label: 'CONDIÇÕES : accommodation',
+              collection: ["sim", "não", "a negociar"],
+              placeholder: 'o produtor offerece o hospedagem ? '  %>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-3">
+      <%= f.input :perdiem,
+                  collection: ["sim", "não", "a negociar"],
+                  label: 'CONDIÇÕES : Alimentação',
+                  placeholder: 'Seu evento tem patrocino? sim, quem ?  '  %>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-3">
+      <%= f.input :backline,
+                  label: 'CONDIÇÕES : Backline',
+                  collection: ["sim", "não", "a negociar"],
+                  placeholder: 'Vc fornece o backline conforme ao rider da banda'  %>
+      </div>
+    </div>
+
+
+    <p><%= f.submit "Send my offer to the band", class: "btn btn-primary" %></p>
+  <% end %>
+
+
+

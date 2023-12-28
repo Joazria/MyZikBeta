@@ -1,0 +1,44 @@
+.mapboxgl-canvas-container {
+  position: absolute;
+  overflow: hidden;
+}
+
+.mapboxgl-popup {
+  min-width:300px;
+  max-height: 150px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 10px 10px 15px;
+    pointer-events: auto;
+}
+
+.mapboxgl-popup-close-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 0;
+    border-radius: 0 3px 0 0;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.mapboxgl-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: transform;
+    opacity: 1;
+    transition: opacity .2s;
+  }
+.map {
+  position: relative;
+
+}
+

@@ -1,0 +1,78 @@
+
+
+  <%= render "shared/banner" %>
+  <%= render 'shared/search' %>
+
+<br>
+
+<%# <div class="container"> %>
+
+   <%#= render "shared/inscriptions" %>
+<%# <hr> %>
+<%# </div>  %>
+<%# <% if user_signed_in? %> 
+
+
+  <%#= render "shared/new_members" %>
+
+        <%#= render "shared/infos_display_home" %>
+
+<%# <hr> %>
+
+
+
+<%# <% end %> 
+<!-- <h1 class="green_title"> ARTISTS : WE INC. YOU INTO MUSIC LIVE MARKET  </h1> -->
+
+        <%= render "shared/bands_display_home" %>
+ 
+
+<!-- DIPLAY SHOWS CONFIRMED -->
+<div class="container">
+  <div class="cards">
+    <% @bookings.where('showtime > ?', Date.today).order(:showtime).each do |gig| %>
+   
+      <% if gig.band.nil? %>
+      <% else %>
+        <div class="card-show">
+          <!-- <%#= cl_image_path Band.find(gig.band).photo.key %> -->
+          <img src="<%= cl_image_path Band.find(gig.band).photo.key %>" />
+          <div class="card-show-infos">
+            <h2>
+
+            <%= gig.showtime.strftime("%d/%m") %> | <%= Band.find(gig.band).name %></h2>
+            <p> <strong><% if gig.bookable_type ==  "Festival" %>
+                <%= gig.bookable.festival_name %>
+                <% else %>
+                <%= gig.bookable.venue_name %>
+                <% end -%></strong> </p>
+               
+            <% end -%>
+          </div>
+        </div>
+        <% end %>
+
+  </div>
+</div>
+
+<hr>
+
+
+  <%= render "shared/agencies_display_home" %>
+
+
+<% if user_signed_in? %>
+
+
+<hr>
+
+
+  <%= render "shared/festivals_display_home" %>
+
+<hr>
+
+ <%= render "shared/venues_display_home" %>
+
+  </div>
+  <% end %>
+  <br>

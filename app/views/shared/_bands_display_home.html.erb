@@ -1,0 +1,19 @@
+<div class="container">
+<h1 class="text-right m-3">
+        ARTISTAS <i class="fas fa-music"></i>
+        </h1>
+
+
+  <div class="cards">
+    <%  @bands.shuffle.first(6).each do |band| %>
+       <%= link_to band do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path band.photo.key, :effect=>"art:zorro", crop: :fill %>')">
+            <%= band.name %>
+        </div>
+    <% end %>
+  <% end %>
+  </div>
+  <%= link_to bands_path, class: "btn btn-flat btn-lg my-5" do %>
+             <i class="fas fa-music"></i> | TODAS AS BANDAS
+            <% end -%>
+</div>

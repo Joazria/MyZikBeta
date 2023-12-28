@@ -1,0 +1,83 @@
+
+
+.flex-simboles {
+  // background-color: #DA2B55;
+  display: flex;
+  justify-content: space-around;
+   align-items: flex-end;
+  flex-wrap: wrap;
+  height: 100%;
+  width:100%;
+  padding: 20px;
+  padding-top: 30px;
+
+}
+
+
+.case-simbole {
+  height: 200px;
+  width: 200px;
+  background: green;
+  border-radius: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  // margin-left: 20px;
+  // padding-left: 20px;
+  padding-top:30px;
+  & h1 {
+    color: white;
+    font-size:16px;
+    text-align: center;
+  }
+
+
+}
+
+.simbole {
+  overflow: hidden;
+  height: 80px;
+  width: 80px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 16px;
+  border-radius: 50%;
+  color:#DA2B55;
+
+   & .fas {
+  font-size: 40px;
+
+
+  }
+
+}
+
+// .simbole img {
+//   height: 72px;
+//   width: 72px;
+//   object-fit: cover;
+
+// }
+
+
+
+// .simbole p {
+//   font-size: 12px;
+//   line-height: 1.4;
+//   opacity: .7;
+//   margin-bottom: 0;
+//   margin-top: 8px;
+// }
+
+
+// .card-offer-infos {
+//   display: grid;
+//   grid-template-columns: 100px 100px 100px;
+//   grid-template-rows: 50px 50px 50px ;
+//   padding: 16px;
+// }

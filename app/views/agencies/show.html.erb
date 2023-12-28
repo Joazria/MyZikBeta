@@ -1,0 +1,70 @@
+<br>
+<br>
+<br>
+
+
+  <div class="container">
+    <header>
+      <%# <i class="fa fa-bars" aria-hidden="true"></i> %>
+    </header>
+    <main>
+      <div class="row">
+        <div class="left col-lg-4">
+          <div class="photo-left">
+                <%= image_tag @agency.logo , :gravity => "face", :crop=>"crop",:width=>200, :height=>200, class: "photo", alt: "Your profile picture" %>
+                <%# <div class="active"></div> %>
+          </div>
+            <h4 class="name"> <%= @agency.company %> </h4>
+              <p class="info">  <%= @agency.estado %>  |    <span class="flag-icon flag-icon-<%= @agency.pais.downcase %> flag-icon-squared "></span></p>
+              <p class="info"><i class="fas fa-envelope"></i> | <%= @agency.email %>  </p>
+              <p class="info"><i class="fab fa-whatsapp-square"></i> | <%= @agency.tel %> </p>
+
+
+          <div class="social">
+              <%= link_to @agency.website do %>
+                <i class="fab fa-facebook-square" aria-hidden="true"></i>
+              <% end %>
+              <%= link_to @agency.instagram do %>
+                <i class="fab fa-instagram-square" aria-hidden="true"></i>
+              <% end %>
+              <%#= link_to @agency.agency_fb do %>
+                  <%# <i class="fab fa-globe" aria-hidden="true"></i>@agency.agency_site %>
+              <%# end %>
+
+          </div>
+          
+        </div>
+          
+
+        <div class="right col-lg-8">
+          <!--  <ul class="nav">
+              <li>Gallery</li>
+              <li>Collections</li>
+              <li>Groups</li>
+              <li>About</li>
+              </ul> -->
+              <%# <span class="follow">Projects</span> %>
+          
+        
+              
+                  <br>
+
+
+                  <div class="cards">
+                  <% @bands.each do |band| %>
+                      <%= link_to band do %>
+                          <div class="card-category text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path band.photo.key, :effect=>"art:zorro", crop: :fill %>')">
+                              <%= band.name %>
+                          </div>
+                      <% end -%>
+                  <% end %>
+                  </div>
+              <br>
+              </div>
+        </div>
+      </div>
+        
+    </main>
+    <br>
+    
+</div>

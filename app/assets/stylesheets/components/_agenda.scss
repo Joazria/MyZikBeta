@@ -1,0 +1,54 @@
+
+.dates {
+  grid-row: 1/ span 2;
+  grid-column: 1 / span 1;
+  text-align: center;
+  text-decoration: none;
+
+    & a {
+      text-decoration: none;
+      color: green;
+    }
+
+  & .card-date {
+  border: 0px;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  width: 100%;
+  border-radius: 0px;
+  opacity: 0.6;
+
+  & h3 {
+    color: gray;
+
+  }
+
+  & h4 {
+    color: green;
+
+  }
+
+   & p {
+    color: gray;
+
+
+  }
+
+}
+
+.card-date:hover {
+    opacity: 1;
+   }
+}
+
+
+
+
+@media (min-width: 100px) and (max-width: 575px) {
+
+
+.dates {
+  grid-row: 5/ span 1;
+  grid-column: 1 / span 1;
+  }
+
+}

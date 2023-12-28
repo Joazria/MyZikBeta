@@ -1,0 +1,21 @@
+ <br> <br>
+ <br>
+ <br>
+
+<div class="container">
+<h1 class="text-right m-3">
+         AGENCIAS <span class="text-green">|  </span> <i class="fas fa-music"></i>
+        </h1>
+
+
+  <div class="cards">
+    <%  @agencies.each do |agency| %>
+       <%= link_to agency do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path agency.logo.key, :effect=>"art:zorro", crop: :fill %>')">
+            <%= agency.company %>
+        </div>
+    <% end %>
+  <% end %>
+  <br>
+  </div>
+</div>

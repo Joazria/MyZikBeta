@@ -1,0 +1,5 @@
+<% if current_user.favorited?(festival) %>
+          <i class="fas fa-heart favorite cards card-category " style='color: red' data-id="<%= festival.id %>" data-remote="true"></i>
+    <% else %>
+          <i class="far fa-heart favorite cards card-category" data-id="<%= festival.id %>" data-remote="true"></i>
+    <% end %>

@@ -1,0 +1,22 @@
+
+
+<div class="container">
+      <h1 class="text-right m-3">
+        CASAS de SHOW/TEATROS </span> <span class="text-white"><i class="fas fa-map-marked-alt"></i>
+        </h1>
+
+
+
+  <div class="cards">
+    <%  @venues.shuffle.first(6).each do |venue| %>
+       <%= link_to venue do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path venue.photo.key, :effect=>"art:zorro", crop: :fill %>')">
+            <%= venue.venue_name %>
+        </div>
+    <% end %>
+  <% end %>
+  </div>
+  <%= link_to venues_path, class:'btn btn-flat btn-lg my-5' do %>
+  <i class="fas fa-map-marked-alt"></i> |  CASA DE SHOWS
+  <% end -%>
+</div>

@@ -1,0 +1,24 @@
+require 'test_helper'
+
+class AgenciesControllerTest < ActionDispatch::IntegrationTest
+  test "should get show" do
+    get agencies_show_url
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get agencies_edit_url
+    assert_response :success
+  end
+
+  test "should get index" do
+    get agencies_index_url
+    assert_response :success
+  end
+
+  test "should get new" do
+    get agencies_new_url
+    assert_response :success
+  end
+
+end

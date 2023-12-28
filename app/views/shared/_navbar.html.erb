@@ -1,0 +1,154 @@
+<nav class="navigation">
+  <%= link_to "/", class: "navigation__logo" do %>
+  <% if user_signed_in? %>
+    <%= image_tag "https://res.cloudinary.com/numama/image/upload/v1641983986/MYZIK/logo_myzik_green_fqsihy.png",
+                  class: "navigation__logo-img",
+                  alt: "MyZik header logo, welcome!" %>
+
+  <% else %>
+    <%= image_tag "https://res.cloudinary.com/numama/image/upload/v1641983986/MYZIK/logo_myzik_green_fqsihy.png",
+                  class: "navigation__logo-img",
+                  alt: "MyZik header logo, welcome!" %>
+
+  <% end %>
+ 
+  <% end %>
+  <div class="navigation__dropdown">
+    <button class="hamburger hamburger--vortex navigation__btn" aria-expanded="false" type="button">
+      <p class="sr-only" id="menu-label">Menu</p>
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <% # Usuário logado --------------------- %>
+    <% if user_signed_in? %>
+      <ul class="navigation__menu">
+        <li class="navigation__menu-logo">
+          <%= link_to "/", class: "navigation__logo" do %>
+            <%= image_tag "https://res.cloudinary.com/numama/image/upload/v1641983986/MYZIK/logo_myzik_green_fqsihy.png",
+                        class: "navigation__menu-img",
+                        alt: "Discosport header logo, welcome!" %>
+          <% end %>
+        </li>
+        <%# <li class="navigation__greeting"> %>
+          <%# Bonjour <%= current_user.first_name %>
+        <%# </li> %>
+        
+        <% # Nav items --------------------- %>
+                <li class="navigation__menu-item">
+          <%= link_to  profile_path(current_user), class: "navigation__menu-link" do %>
+                      <%= image_tag current_user.avatar,
+                        class: "avatar" %> | PROFILE
+          <% end -%>
+        </li>
+        
+         <li class="navigation__menu-item">
+          <%= link_to ongoing_festivals_path,  class: "navigation__menu-link" do  %>
+
+            <i class="fas fa-sliders-h" data-toggle="tooltip" data-placement="bottom" title="On Going Festivais"></i>
+            DB 
+          <% end %>
+        </li>
+
+        <li class="navigation__menu-item">
+          <%= link_to bookings_path,  class: "navigation__menu-link" do  %>
+
+          <i class="fas fa-calendar-check" data-toggle="tooltip" data-placement="bottom" title="Booking CRM"></i>
+          BOOKING
+          <% end %>
+        </li>
+
+        <li class="navigation__menu-item">
+          <%= link_to  "/bands", class: "navigation__menu-link" do %>
+          <i class="fas fa-music" data-toggle="tooltip" data-placement="bottom" title="Bandas"></i>
+          BANDS
+          <% end %>
+        </li>
+        <li class="navigation__menu-item">
+          <%= link_to "/festivals", class: "navigation__menu-link" do  %>
+            <i class="fas fa-rainbow" data-toggle="tooltip" data-placement="bottom" title="Festivais"></i>
+          FESTIVALS
+          <% end %>
+        </li>
+        <li class="navigation__menu-item">
+          <%= link_to  "/venues", class: "navigation__menu-link" do  %>
+          <i class="fas fa-house-damage" data-toggle="tooltip" data-placement="bottom" title="Casas de Shows"></i>
+          CASAS DE SHOWS
+          <% end %>
+        </li>
+
+        <li class="navigation__menu-item">
+          <%= link_to  "/map_venues", class: "navigation__menu-link" do  %>
+          <i class="fas fa-map-marked-alt" data-toggle="tooltip" data-placement="bottom" title="Casas de Shows"></i>
+            MAPA DAS CASAS 
+          <% end %>
+        </li>
+                <li class="navigation__menu-item">
+          <%= link_to "/about_us", class: "navigation__menu-link" do %>
+          <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Infos"></i>
+          MyZik
+          <% end %>
+        </li>
+
+        
+
+        <li class="navigation__menu-item">
+          <%= link_to destroy_user_session_path, :method => :delete, class: "navigation__menu-link" do %>
+            <i class="fas fa-sign-out-alt" data-toggle="tooltip" data-placement="bottom" title="Log Out"></i>
+          LOG OUT 
+          <% end %>
+        </li>
+<!--   <li class="navigation__menu-dropdown">
+          <%#= render "shared/navbar_dropdown" %>
+        </li> -->
+
+<!--    <li class="navigation__menu-item">
+         <button type="button" class="btn btn-primary border border-warning" data-toggle="modal" data-target="#ourEventsModal">
+       Our Next Events
+      </button>
+      </li> -->
+
+        <%# Acesso ao Dashboard --------------------- %>
+<!--         <li class="navigation__menu-item">
+          <%# if current_user.email == 'joa.azria@gmail.com' || current_user.email == 'rafael@myzik.app' || current_user.email == 'verboaberto@gmail.com' %>
+            <%#= link_to "Dashboard", dashboard_path, class: "navigation__menu-link" %>
+          <%# end %>
+        </li> -->
+      </ul>
+    <%# Usuário não logado --------------------- %>
+    <% else %>
+      <ul class="navigation__menu">
+        <li class="navigation__menu-logo">
+          <%= image_tag "https://res.cloudinary.com/numama/image/upload/v1641983986/MYZIK/logo_myzik_green_fqsihy.png",
+                        class: "navigation__menu-img",
+                        alt: "MyZik header logo, welcome!" %>
+        </li>
+
+        <li class="navigation__menu-item">
+          <%= link_to "Agencias", "/agencies", class: "navigation__menu-link" %>
+        </li>
+        <li class="navigation__menu-item">
+          <%= link_to "Bands", "/bands", class: "navigation__menu-link" %>
+        </li>
+        <li class="navigation__menu-item">
+          <%= link_to " MyZik", "/about_us", class: "navigation__menu-link" %>
+        </li>
+
+
+
+<!--         <li class="navigation__menu-item">
+          <%#= link_to "Register", new_user_registration_path, class: "navigation__menu-link" %>
+        </li> -->
+
+
+<!--         <li class="navigation__menu-item">
+          <%#= mail_to "joa@myzik.app", "Contact Us", class: "navigation__menu-link" %>
+        </li> -->
+<!--            <li class="navigation__menu-item">
+          <#%= link_to "Log in", new_user_session_path, class: "navigation__menu-link" %>
+        </li> -->
+      </ul>
+    <% end %>
+  </div>
+</nav>
+

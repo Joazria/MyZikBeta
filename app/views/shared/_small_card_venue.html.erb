@@ -1,0 +1,8 @@
+<div class="card-product">
+    <%= image_tag cl_image_path venue.photo.key, :effect=>"art:zorro", crop: :fill %>
+    <div class="card-product-infos">
+        <h2> <%= venue.venue_name %></h2>
+        <p> <%= venue.address.to_s.last(110)%></p>
+    </div>
+</div>
+
